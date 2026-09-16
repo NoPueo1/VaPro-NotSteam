@@ -31,6 +31,79 @@
         </div>
     </header>
 
+    <!-- SECCIÓN: CONTACTO -->
+    <main class="container my-5">
+        
+        <div class="text-center mb-5">
+            <h1 class="display-4 fw-bold text-white">Contáctanos</h1>
+            <p class="lead text-white-50">¿Tienes dudas, problemas con un juego o propuestas de negocio? Escríbenos.</p>
+        </div>
+
+        <div class="row g-5">
+            
+            <div class="col-lg-5">
+                <div class="bg-dark bg-opacity-50 p-4 rounded-4 border border-secondary border-opacity-25 h-100 shadow-lg">
+                    <h3 class="fw-bold text-white mb-4 border-bottom border-primary pb-2">Información</h3>
+                    
+                    <ul class="list-unstyled text-light fs-5">
+                        <li class="mb-4 d-flex align-items-center">
+                            <span class="fs-3 me-3">📍</span>
+                            <span><strong>Ubicación:</strong><br>Sede Duoc UC, Concepción, Chile</span>
+                        </li>
+                        <li class="mb-4 d-flex align-items-center">
+                            <span class="fs-3 me-3">📧</span>
+                            <span><strong>Correo de Soporte:</strong><br>ayuda@vapro.cl</span>
+                        </li>
+                    </ul>
+                    
+                    <div class="mt-5 bg-black bg-opacity-25 p-3 rounded-3 border border-secondary border-opacity-25">
+                        <h5 class="text-white fw-bold">Horario de Atención:</h5>
+                        <p class="text-white-50 mb-0">Lunes a Viernes: 09:00 - 18:00 hrs.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-7">
+                <div class="bg-dark bg-opacity-75 p-4 p-md-5 rounded-4 border border-secondary border-opacity-25 shadow-lg" data-bs-theme="dark">
+                    <h3 class="fw-bold text-white mb-4">Envíanos un mensaje</h3>
+                    
+                    <form action="#" method="POST">
+                        
+                        <div class="row g-3 mb-3">
+                            <div class="col-md-6">
+                                <label for="nombre" class="form-label text-light">Nombre completo</label>
+                                <input type="text" class="form-control" id="nombre" placeholder="Ej. Gordon Freeman" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="correo" class="form-label text-light">Correo electrónico</label>
+                                <input type="email" class="form-control" id="correo" placeholder="tu@correo.com" required>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="asunto" class="form-label text-light">Motivo del contacto</label>
+                            <select class="form-select" id="asunto" required>
+                                <option value="" selected disabled>Selecciona una opción...</option>
+                                <option value="soporte">Soporte técnico o Reembolsos</option>
+                                <option value="desarrollador">Soy desarrollador (Quiero publicar un juego)</option>
+                                <option value="negocios">Propuesta de negocios</option>
+                                <option value="otros">Otros</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="mensaje" class="form-label text-light">Mensaje</label>
+                            <textarea class="form-control" id="mensaje" rows="5" placeholder="Detalla tu consulta aquí..." required></textarea>
+                        </div>
+                        
+                        <button type="button" class="btn btn-primary btn-lg w-100 fw-bold">Enviar Mensaje</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
     <!-- FOOTER -->
     <footer class="py-5 mt-5">
         <div class="container-fluid">
