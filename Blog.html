@@ -3,32 +3,105 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Inicio</title>
+    <title>Vapro - Blog</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <div class="container-fluid px-4">
-        <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-4 py-5 my-5"> 
-            <div class="col mb-3"> 
-                <a href="Index.html" class="d-flex align-items-center mb-1 link-body-emphasis text-decoration-none" aria-label="JuegosBaratos"> <img src="Assets/logo.png" alt="Logo JuegosBaratos" width="150" class="me-2" href="Index.html"> </a> 
-                <p class="text-body-secondary" style="text-align: justify;">© 2026. Vasquez-Provoste Corporation. Todos los derechos reservados. Todos los juegos en venta siguen las normativas de venta vigentes en la legislación Chilena.</p> 
+
+    <!-- HEADER -->
+    <header class="py-3 mb-4"> 
+        <div class="container-fluid d-flex flex-wrap align-items-center justify-content-center justify-content-md-between border-bottom"> 
+            <div class="col-md-3 mb-2 mb-md-0"> 
+                <a href="Index.html" class="d-inline-flex align-items-center link-body-emphasis text-decoration-none">
+                    <img src="Assets/logo.png" alt="Logo Vapro" width="150">
+                    <img src="Assets/logo-letras.png" alt="Segundo Logo" width="250">
+                </a> 
             </div> 
-
-            <div class="col mb-3"></div> 
-
-            <div class="col mb-3"></div> 
-
-            <div class="col mb-3"> 
-                <h5>Sobre nosotros</h5> 
-                <ul class="nav flex-column"> 
-                    <li class="nav-item mb-2"><a href="Index.html" class="nav-link p-0 text-body-secondary">Pagina Principal</a></li> 
-                    <li class="nav-item mb-2"><a href="Nosotros.html" class="nav-link p-0 text-body-secondary">Sobre Nosotros</a></li> 
-                    <li class="nav-item mb-2"><a href="Blog.html" class="nav-link p-0 text-body-secondary">Blog</a></li> 
+                <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0"> 
+                    <li><a href="Index.html" class="nav-link px-2 text-light">Pagina Principal</a></li> 
+                    <li><a href="Nosotros.html" class="nav-link px-2 text-light">Sobre Nosotros</a></li> 
+                    <li><a href="Blog.html" class="nav-link px-2 text-light">Blog</a></li> 
+                    <li><a href="Contacto.html" class="nav-link px-2 text-light">Contacto</a></li> 
                 </ul> 
+            <div class="col-md-3 text-end"> 
+                <button type="button" class="btn btn-outline-light me-2">Login</button> 
+                <button type="button" class="btn btn-primary">Sign-up</button> 
             </div> 
-        </footer>
-    </div>
+        </div>
+    </header>
+
+    <!-- SECCIÓN DE NOTICIAS DEL BLOG -->
+    <main class="container my-5">
+        <h1 class="display-4 fw-bold text-white mb-5 border-bottom border-secondary pb-3">Noticias Importantes</h1>
+
+        <div class="row g-5">
+            
+            <div class="col-md-6">
+                <div class="card h-100 game-card bg-dark text-white border-0">
+                    <img src="Assets/juegos/cyberpunk2099.png" class="card-img-top" alt="Noticia Cyberpunk" style="height: 350px; object-fit: cover;">
+                    
+                    <div class="card-body d-flex flex-column p-4">
+                        <span class="badge bg-primary align-self-start mb-3 fs-6">Actualización</span>
+                        <h2 class="card-title fw-bold">El parche 2.0 de Cyberpunk 2099 ya está aquí</h2>
+                        <p class="card-text text-light fs-5 mt-2">Descubre todas las novedades, mejoras de rendimiento gráfico y el nuevo contenido de misiones que trae la actualización más esperada del año. ¡La ciudad de neón nunca se vio tan bien!</p>
+                        
+                        <div class="mt-auto d-flex justify-content-between align-items-center pt-4">
+                            <small class="text-white-50">15 de Septiembre, 2026</small>
+                            <a href="Noticia1.html" class="btn btn-lg btn-outline-light px-4">Leer más</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card h-100 game-card bg-dark text-white border-0">
+                    <img src="Assets/juegos/residentgood4.png" class="card-img-top" alt="Noticia Resident" style="height: 350px; object-fit: cover;">
+                    
+                    <div class="card-body d-flex flex-column p-4">
+                        <span class="badge bg-danger align-self-start mb-3 fs-6">Lanzamiento</span>
+                        <h2 class="card-title fw-bold">Resident Good 4 rompe récords de ventas</h2>
+                        <p class="card-text text-light fs-5 mt-2">El esperado remake ha superado todas las expectativas de la comunidad en su primera semana. Conoce los detalles del éxito rotundo y las primeras impresiones de los desarrolladores.</p>
+                        
+                        <div class="mt-auto d-flex justify-content-between align-items-center pt-4">
+                            <small class="text-white-50">12 de Septiembre, 2026</small>
+                            <a href="Noticia2.html" class="btn btn-lg btn-outline-light px-4">Leer más</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="py-5 mt-5">
+        <div class="container-fluid">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
+                <div class="col mb-3"> 
+                    <a href="Index.html" class="d-flex align-items-center mb-1 link-body-emphasis text-decoration-none" aria-label="Vapro"> 
+                        <img src="Assets/logo.png" alt="Logo Vapro" width="150"> 
+                        <img src="Assets/logo-letras.png" alt="Segundo Logo" width="250">
+                    </a> 
+                    <p class="text-light text-start">© 2026. Provoste-Vasquez Corporation. Todos los derechos reservados. Todos los juegos en venta siguen las normativas de venta vigentes en la legislación Chilena.</p> 
+                </div> 
+
+                <div class="col mb-3"></div> 
+
+                <div class="col mb-3"></div> 
+
+                <div class="col mb-3"> 
+                    <h5 class="text-white">Vapro una empresa de Provoste-Vasquez Corporation</h5> 
+                    <ul class="nav flex-column"> 
+                        <li class="nav-item mb-2"><a href="Index.html" class="nav-link p-0 text-light">Pagina Principal</a></li> 
+                        <li class="nav-item mb-2"><a href="Nosotros.html" class="nav-link p-0 text-light">Sobre Nosotros</a></li> 
+                        <li class="nav-item mb-2"><a href="Blog.html" class="nav-link p-0 text-light">Blog</a></li> 
+                        <li class="nav-item mb-2"><a href="Contacto.html" class="nav-link p-0 text-light">Contacto</a></li> 
+                    </ul> 
+                </div> 
+            </div>
+        </div>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
   </body>
