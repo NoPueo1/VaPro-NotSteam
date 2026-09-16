@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Vapro - Contacto</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
@@ -24,9 +24,12 @@
                     <li><a href="Blog.html" class="nav-link px-2 text-light">Blog</a></li> 
                     <li><a href="Contacto.html" class="nav-link px-2 text-light">Contacto</a></li> 
                 </ul> 
-            <div class="col-md-3 text-end"> 
-                <a href="Login.html" class="btn btn-outline-light me-2">Login</a> 
-                <a href="Sign-up.html" class="btn btn-primary">Sign-up</a>
+            <div class="col-md-3 text-end d-flex align-items-center justify-content-end"> 
+                <a href="carrito.html" class="btn btn-outline-light me-2 position-relative">
+                    Carrito <span class="badge bg-danger rounded-pill badge-carrito-total d-none">0</span>
+                </a>
+                <div id="header-user-area" class="d-inline-flex align-items-center"><a href="Login.html" class="btn btn-outline-light me-2">Iniciar Sesión</a> 
+                <a href="Sign-up.html" class="btn btn-morado">Registrarse</a></div> 
             </div> 
         </div>
     </header>
@@ -46,13 +49,13 @@
                     <h3 class="fw-bold text-white mb-4 border-bottom border-primary pb-2">Información</h3>
                     
                     <ul class="list-unstyled text-light fs-5">
-                        <li class="mb-4 d-flex align-items-center">
-                            <span class="fs-3 me-3">📍</span>
-                            <span><strong>Ubicación:</strong><br>Sede Duoc UC, Concepción, Chile</span>
+                        <li class="mb-4">
+                            <strong>Ubicación:</strong><br>
+                            <span class="text-white-50">Sede Duoc UC, Concepción, Chile</span>
                         </li>
-                        <li class="mb-4 d-flex align-items-center">
-                            <span class="fs-3 me-3">📧</span>
-                            <span><strong>Correo de Soporte:</strong><br>ayuda@vapro.cl</span>
+                        <li class="mb-4">
+                            <strong>Correo de Soporte:</strong><br>
+                            <span class="text-white-50">ayuda@vapro.cl</span>
                         </li>
                     </ul>
                     
@@ -96,7 +99,7 @@
                             <textarea class="form-control" id="mensaje" rows="5" placeholder="Detalla tu consulta aquí..." required></textarea>
                         </div>
                         
-                        <button type="button" class="btn btn-primary btn-lg w-100 fw-bold">Enviar Mensaje</button>
+                        <button type="submit" class="btn btn-primary btn-lg w-100 fw-bold">Enviar Mensaje</button>
                     </form>
                 </div>
             </div>
@@ -113,7 +116,7 @@
                         <img src="Assets/logo.png" alt="Logo Vapro" width="150"> 
                         <img src="Assets/logo-letras.png" alt="Segundo Logo" width="250">
                     </a> 
-                    <p class="text-light text-start">© 2026. Provoste-Vasquez Corporation. Todos los derechos reservados. Todos los juegos en venta siguen las normativas de venta vigentes en la legislación Chilena.</p> 
+                    <p class="text-light text-start">&copy; 2026. Provoste-Vasquez Corporation. Todos los derechos reservados. Todos los juegos en venta siguen las normativas de venta vigentes en la legislación Chilena.</p> 
                 </div> 
 
                 <div class="col mb-3"></div> 
@@ -127,12 +130,23 @@
                         <li class="nav-item mb-2"><a href="Nosotros.html" class="nav-link p-0 text-light">Sobre Nosotros</a></li> 
                         <li class="nav-item mb-2"><a href="Blog.html" class="nav-link p-0 text-light">Blog</a></li> 
                         <li class="nav-item mb-2"><a href="Contacto.html" class="nav-link p-0 text-light">Contacto</a></li> 
+                        <li class="nav-item mb-2"><a href="carrito.html" class="nav-link p-0 text-light">Carrito de Compras</a></li> 
+                        <li class="nav-item mb-2"><a href="admin.html" class="nav-link p-0 text-light fw-bold">Panel Administrador</a></li> 
                     </ul> 
                 </div> 
             </div>
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/storage.js"></script>
+    <script>
+      document.querySelector('form').addEventListener('submit', function(e) {
+          e.preventDefault();
+          let nombre = document.getElementById('nombre').value;
+          alert('¡Gracias ' + nombre + '! Tu mensaje ha sido enviado exitosamente al equipo de soporte de Vapro.');
+          this.reset();
+      });
+    </script>
   </body>
 </html>

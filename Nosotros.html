@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Vapro - Sobre Nosotros</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
@@ -18,15 +18,18 @@
                     <img src="Assets/logo-letras.png" alt="Segundo Logo" width="250">
                 </a> 
             </div> 
-                <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0"> 
-                    <li><a href="Index.html" class="nav-link px-2 text-light">Pagina Principal</a></li> 
-                    <li><a href="Nosotros.html" class="nav-link px-2 text-light">Sobre Nosotros</a></li> 
-                    <li><a href="Blog.html" class="nav-link px-2 text-light">Blog</a></li> 
-                    <li><a href="Contacto.html" class="nav-link px-2 text-light">Contacto</a></li> 
-                </ul> 
-            <div class="col-md-3 text-end"> 
-                <a href="Login.html" class="btn btn-outline-light me-2">Login</a> 
-                <a href="Sign-up.html" class="btn btn-primary">Sign-up</a>
+            <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0"> 
+                <li><a href="Index.html" class="nav-link px-2 text-light">Pagina Principal</a></li> 
+                <li><a href="Nosotros.html" class="nav-link px-2 text-white fw-bold">Sobre Nosotros</a></li> 
+                <li><a href="Blog.html" class="nav-link px-2 text-light">Blog</a></li> 
+                <li><a href="Contacto.html" class="nav-link px-2 text-light">Contacto</a></li> 
+            </ul> 
+            <div class="col-md-3 text-end d-flex align-items-center justify-content-end"> 
+                <a href="carrito.html" class="btn btn-outline-light me-2 position-relative">
+                    Carrito <span class="badge bg-danger rounded-pill badge-carrito-total d-none">0</span>
+                </a>
+                <div id="header-user-area" class="d-inline-flex align-items-center"><a href="Login.html" class="btn btn-outline-light me-2">Iniciar Sesión</a> 
+                <a href="Sign-up.html" class="btn btn-morado">Registrarse</a></div> 
             </div> 
         </div>
     </header>
@@ -34,13 +37,12 @@
     <!-- Sobre Nosotros -->
     <main class="container my-5">
         
-        <article class="bg-dark bg-opacity-50 p-4 p-md-5 rounded-4 shadow-lg border border-secondary border-opacity-25">
+        <article class="bg-dark bg-opacity-50 p-4 p-md-5 rounded-4 shadow-lg border border-secondary border-opacity-25 mb-5">
             
-            <h1 class="display-4 fw-bold text-white mb-3">Vapro del Duoc al exito mundial</h1>
-            <h4 class="display-10 fw-bold text-white mb-3">De un proyecto universitario a ser el pilar fundamental de la industria del gaming en Latinoamérica.</h4>
-            <br>
+            <h1 class="display-4 fw-bold text-white mb-3">Vapro del Duoc al éxito mundial</h1>
+            <h4 class="fw-bold text-white mb-4">De un proyecto universitario a ser el pilar fundamental de la industria del gaming en Latinoamérica.</h4>
             
-            <img src="Assets/nosotros.png" class="img-fluid rounded-3 mb-5 w-100 shadow" alt="Cyberpunk 2099" style="max-height: 450px; object-fit: cover;">
+            <img src="Assets/nosotros.png" class="img-fluid rounded-3 mb-5 w-100 shadow" alt="Sobre Nosotros Vapro" style="max-height: 450px; object-fit: cover;">
             
             <div class="text-light fs-5" style="line-height: 1.8;">
                 <p class="lead fw-semibold text-white">Todo comenzó en las aulas de <strong>Duoc UC</strong>. Éramos dos apasionados estudiantes de la carrera de Informática con una visión compartida. Durante el exigente ramo de <em>Desarrollo Fullstack 2</em>, se nos asignó lo que parecía ser un desafío académico más: crear una tienda web desde cero.</p>
@@ -48,9 +50,79 @@
                 <p>Sin embargo, decidimos ir mucho más allá de la nota. Construimos la primera versión de <strong>Vapro</strong> (Provoste-Vasquez Corporation) con la firme convicción de que los gamers chilenos y latinoamericanos merecían una plataforma más justa, rápida y orientada a la comunidad.</p>
                     
                 <p>Hoy, años después de aquella entrega final, lo que nació entre tazas de café, trasnoches programando y compilando código, se ha convertido en un auténtico pilar de la industria de los videojuegos. Hemos revolucionado la forma en que los jugadores adquieren sus títulos, compitiendo codo a codo con los gigantes del mercado global.</p>
-
             </div>
         </article>
+
+        <!-- Misión y Visión -->
+        <div class="row g-4 mb-5">
+            <div class="col-md-6">
+                <div class="card card-admin h-100 p-4 shadow-sm text-white">
+                    <div class="card-body">
+                        <h3 class="fw-bold mb-3 border-bottom pb-2">Nuestra Misión</h3>
+                        <p class="text-light opacity-90">
+                            Proveer una plataforma confiable, rápida y moderna para la compra y gestión de videojuegos digitales, 
+                            garantizando una experiencia transparente, segura y orientada a satisfacer las necesidades de cada jugador.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card card-admin h-100 p-4 shadow-sm text-white">
+                    <div class="card-body">
+                        <h3 class="fw-bold mb-3 border-bottom pb-2">Nuestra Visión</h3>
+                        <p class="text-light opacity-90">
+                            Posicionarnos como la tienda digital de referencia para gamers en Chile y Latinoamérica, destacando por 
+                            nuestro catálogo diverso, soporte cercano y el constante desarrollo de soluciones tecnológicas.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Equipo de Desarrolladores -->
+        <section class="mb-5">
+            <h3 class="text-white fw-bold mb-4 border-bottom pb-2">Equipo de Desarrollo</h3>
+            
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="card card-admin h-100 p-4 shadow-sm text-white">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 55px; height: 55px; background: linear-gradient(135deg, #7b2cbf, #b80de2); font-size: 1.4rem; font-weight: bold;">
+                                VP
+                            </div>
+                            <div>
+                                <h4 class="mb-0 fw-bold">Vicente Provoste</h4>
+                                <small class="text-white-50">Co-Fundador & Desarrollador Frontend</small>
+                            </div>
+                        </div>
+                        <p class="text-light opacity-90 mb-0">
+                            Diseño visual, experiencia de usuario, maquetación de la vitrina pública, pie de página 
+                            y la estética espacial distintiva de la plataforma Vapro.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="card card-admin h-100 p-4 shadow-sm text-white">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 55px; height: 55px; background: linear-gradient(135deg, #3a0ca3, #7209b7); font-size: 1.4rem; font-weight: bold;">
+                                AV
+                            </div>
+                            <div>
+                                <h4 class="mb-0 fw-bold">Agustín Vásquez</h4>
+                                <small class="text-white-50">Co-Fundador & Desarrollador Fullstack</small>
+                            </div>
+                        </div>
+                        <p class="text-light opacity-90 mb-0">
+                            Manejo de LocalStorage, panel de administración con mantenedores de juegos y usuarios, 
+                            y la validación de formularios y RUT chileno.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <!-- FOOTER -->
@@ -62,7 +134,7 @@
                         <img src="Assets/logo.png" alt="Logo Vapro" width="150"> 
                         <img src="Assets/logo-letras.png" alt="Segundo Logo" width="250">
                     </a> 
-                    <p class="text-light text-start">© 2026. Provoste-Vasquez Corporation. Todos los derechos reservados. Todos los juegos en venta siguen las normativas de venta vigentes en la legislación Chilena.</p> 
+                    <p class="text-light text-start">&copy; 2026. Provoste-Vasquez Corporation. Todos los derechos reservados. Todos los juegos en venta siguen las normativas de venta vigentes en la legislación Chilena.</p> 
                 </div> 
 
                 <div class="col mb-3"></div> 
@@ -76,12 +148,15 @@
                         <li class="nav-item mb-2"><a href="Nosotros.html" class="nav-link p-0 text-light">Sobre Nosotros</a></li> 
                         <li class="nav-item mb-2"><a href="Blog.html" class="nav-link p-0 text-light">Blog</a></li> 
                         <li class="nav-item mb-2"><a href="Contacto.html" class="nav-link p-0 text-light">Contacto</a></li> 
+                        <li class="nav-item mb-2"><a href="carrito.html" class="nav-link p-0 text-light">Carrito de Compras</a></li> 
+                        <li class="nav-item mb-2"><a href="admin.html" class="nav-link p-0 text-light fw-bold">Panel Administrador</a></li> 
                     </ul> 
                 </div> 
             </div>
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/storage.js"></script>
   </body>
 </html>

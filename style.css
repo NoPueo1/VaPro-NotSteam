@@ -1,24 +1,21 @@
+:root {
+    --morado-principal: #7b2cbf;
+    --morado-oscuro: #240046;
+    --morado-hover: #9d4edd;
+    --borde-lila: rgba(180, 100, 255, 0.3);
+}
+
 body {
     background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-    
     background-attachment: fixed;
-    
-    color: #ffffff; 
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-footer {
-    background: linear-gradient(135deg, rgba(90, 15, 150, 0.4), rgba(30, 5, 50, 0.5));
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px); 
-    border-top: 1px solid rgba(180, 100, 255, 0.2);
-    box-shadow: 0 -8px 32px 0 rgba(0, 0, 0, 0.5);
-}
-
-footer .nav-link:hover {
-    color: #ffffff !important;
-    text-shadow: 0 0 10px rgba(180, 100, 255, 0.8); 
-}
-
+/* Header */
 header {
     background: linear-gradient(135deg, rgba(90, 15, 150, 0.4), rgba(30, 5, 50, 0.5));
     backdrop-filter: blur(15px);
@@ -32,7 +29,22 @@ header .nav-link:hover {
     text-shadow: 0 0 10px rgba(180, 100, 255, 0.8); 
 }
 
+/* Footer */
+footer {
+    background: linear-gradient(135deg, rgba(90, 15, 150, 0.4), rgba(30, 5, 50, 0.5));
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px); 
+    border-top: 1px solid rgba(180, 100, 255, 0.2);
+    box-shadow: 0 -8px 32px 0 rgba(0, 0, 0, 0.5);
+    margin-top: auto;
+}
 
+footer .nav-link:hover {
+    color: #ffffff !important;
+    text-shadow: 0 0 10px rgba(180, 100, 255, 0.8); 
+}
+
+/* Tarjetas de juego en tienda */
 .game-card {
     background: rgba(30, 30, 40, 0.7) !important; 
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
@@ -49,4 +61,160 @@ header .nav-link:hover {
 .game-card:hover .btn-outline-light {
     background-color: #ffffff;
     color: #000000;
+}
+
+/* Panel Administrador - Estilos oscuros acordes a la tienda */
+.card-admin {
+    background: rgba(22, 18, 40, 0.85) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(180, 100, 255, 0.25) !important;
+    color: #ffffff;
+}
+
+.card-header-morado {
+    background: linear-gradient(135deg, rgba(123, 44, 191, 0.85), rgba(60, 9, 108, 0.95)) !important;
+    color: #ffffff;
+    font-weight: bold;
+    border-bottom: 1px solid rgba(180, 100, 255, 0.3);
+}
+
+/* Menu lateral admin */
+.list-group-admin .list-group-item {
+    background: rgba(20, 16, 38, 0.7);
+    border-color: rgba(180, 100, 255, 0.15);
+    color: #e2e8f0;
+}
+
+.list-group-admin .list-group-item.active {
+    background: linear-gradient(135deg, #7b2cbf 0%, #3c096c 100%) !important;
+    border-color: rgba(180, 100, 255, 0.6) !important;
+    color: #ffffff !important;
+    font-weight: bold;
+}
+
+.list-group-admin .list-group-item:hover:not(.active) {
+    background-color: rgba(123, 44, 191, 0.25);
+    color: #ffffff;
+}
+
+/* Boton morado */
+.btn-morado {
+    background: linear-gradient(135deg, #7b2cbf, #5a189a);
+    border-color: rgba(180, 100, 255, 0.4);
+    color: #ffffff;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-morado:hover,
+.btn-morado.active,
+.btn-morado:active,
+.btn-morado:focus {
+    background: linear-gradient(135deg, #9d4edd, #7b2cbf);
+    border-color: rgba(180, 100, 255, 0.7);
+    color: #ffffff;
+    box-shadow: 0 0 10px rgba(180, 100, 255, 0.4);
+}
+
+.bg-morado {
+    background-color: #7b2cbf !important;
+}
+
+/* Tablas oscuras del panel */
+.table-admin {
+    --bs-table-color: #f1f5f9;
+    --bs-table-bg: transparent;
+    --bs-table-border-color: rgba(180, 100, 255, 0.2);
+    --bs-table-striped-bg: rgba(255, 255, 255, 0.04);
+    --bs-table-striped-color: #f1f5f9;
+    --bs-table-hover-bg: rgba(180, 100, 255, 0.15);
+    --bs-table-hover-color: #ffffff;
+    color: #f1f5f9 !important;
+}
+
+.table-admin td,
+.table-admin th {
+    color: #f1f5f9 !important;
+    vertical-align: middle;
+}
+
+.table-admin .text-muted,
+.table-admin small {
+    color: #cbd5e1 !important;
+}
+
+.table-admin thead th {
+    background: rgba(35, 20, 60, 0.85);
+    color: #ffffff !important;
+    border-bottom: 1px solid rgba(180, 100, 255, 0.35);
+}
+
+/* Modales oscuros */
+.modal-admin {
+    background: rgba(16, 12, 32, 0.95);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(180, 100, 255, 0.3);
+    color: #ffffff;
+}
+
+.modal-admin .form-control,
+.modal-admin .form-select {
+    background-color: rgba(26, 20, 48, 0.85);
+    border-color: rgba(180, 100, 255, 0.25);
+    color: #ffffff;
+}
+
+.modal-admin .form-control:focus,
+.modal-admin .form-select:focus {
+    background-color: rgba(35, 25, 65, 0.95);
+    border-color: rgba(180, 100, 255, 0.7);
+    color: #ffffff;
+    box-shadow: 0 0 10px rgba(180, 100, 255, 0.3);
+}
+
+.modal-admin .form-control::placeholder {
+    color: #94a3b8;
+}
+
+/* Miniaturas de juegos */
+.foto-juego-thumb {
+    width: 50px;
+    height: 40px;
+    object-fit: cover;
+    border: 1px solid rgba(180, 100, 255, 0.3);
+    border-radius: 4px;
+}
+
+.foto-preview {
+    max-width: 140px;
+    max-height: 140px;
+    border: 1px solid rgba(180, 100, 255, 0.4);
+    padding: 3px;
+    background-color: rgba(20, 16, 36, 0.8);
+    border-radius: 4px;
+}
+
+/* Galeria de juegos estilo Steam */
+.visor-galeria-img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    border-radius: 8px;
+}
+
+.miniatura-galeria {
+    width: 130px;
+    height: 75px;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.miniatura-galeria:hover {
+    transform: scale(1.04);
 }

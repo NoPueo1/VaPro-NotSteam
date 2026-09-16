@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Vapro - Sign-up</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <title>Vapro - Registro de Usuario</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
@@ -18,15 +18,18 @@
                     <img src="Assets/logo-letras.png" alt="Segundo Logo" width="250">
                 </a> 
             </div> 
-                <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0"> 
-                    <li><a href="Index.html" class="nav-link px-2 text-light">Pagina Principal</a></li> 
-                    <li><a href="Nosotros.html" class="nav-link px-2 text-light">Sobre Nosotros</a></li> 
-                    <li><a href="Blog.html" class="nav-link px-2 text-light">Blog</a></li> 
-                    <li><a href="Contacto.html" class="nav-link px-2 text-light">Contacto</a></li> 
-                </ul> 
-            <div class="col-md-3 text-end"> 
-                <a href="Login.html" class="btn btn-outline-light me-2">Login</a> 
-                <a href="Sign-up.html" class="btn btn-primary">Sign-up</a>
+            <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0"> 
+                <li><a href="Index.html" class="nav-link px-2 text-light">Pagina Principal</a></li> 
+                <li><a href="Nosotros.html" class="nav-link px-2 text-light">Sobre Nosotros</a></li> 
+                <li><a href="Blog.html" class="nav-link px-2 text-light">Blog</a></li> 
+                <li><a href="Contacto.html" class="nav-link px-2 text-light">Contacto</a></li> 
+            </ul> 
+            <div class="col-md-3 text-end d-flex align-items-center justify-content-end"> 
+                <a href="carrito.html" class="btn btn-outline-light me-2 position-relative">
+                    Carrito <span class="badge bg-danger rounded-pill badge-carrito-total d-none">0</span>
+                </a>
+                <div id="header-user-area" class="d-inline-flex align-items-center"><a href="Login.html" class="btn btn-outline-light me-2">Iniciar Sesión</a> 
+                <a href="Sign-up.html" class="btn btn-morado active">Registrarse</a></div> 
             </div> 
         </div>
     </header>
@@ -37,12 +40,12 @@
             <div class="bg-dark bg-opacity-75 p-5 rounded-4 shadow-lg border border-secondary border-opacity-25" data-bs-theme="dark">
                 
                 <div class="text-center mb-4">
-                    <img src="Assets/logo.jpg" alt="Logo Vapro" width="80" class="logo-icono mb-3">
+                    <img src="Assets/logo.png" alt="Logo Vapro" width="80" class="logo-icono mb-3">
                     <h2 class="fw-bold text-white">Crear Cuenta</h2>
                     <p class="text-white-50">Únete a la mejor comunidad gamer de Chile</p>
                 </div>
                 
-                <form action="#">
+                <form id="form-signup">
                     <div class="row g-3 mb-3">
                         <div class="col-md-6">
                             <label for="regNombre" class="form-label text-light">Nombre</label>
@@ -57,6 +60,7 @@
                     <div class="mb-3">
                         <label for="regEmail" class="form-label text-light">Correo Electrónico</label>
                         <input type="email" class="form-control" id="regEmail" placeholder="tu@correo.com" required>
+                        <small class="form-text text-white-50">Permitidos: @duoc.cl, @profesor.duoc.cl o @gmail.com</small>
                     </div>
                     
                     <div class="row g-3 mb-4">
@@ -71,13 +75,13 @@
                     </div>
                     
                     <div class="form-check mb-4">
-                        <input class="form-check-input" type="checkbox" value="" id="terms" required>
+                        <input class="form-check-input" type="checkbox" id="terms" required>
                         <label class="form-check-label text-light" for="terms">
                             Acepto los <a href="TerminosyCondiciones.html" class="text-primary text-decoration-none">Términos y Condiciones</a> de Vapro.
                         </label>
                     </div>
                     
-                    <button type="button" class="btn btn-primary w-100 fw-bold mb-3">Registrarse</button>
+                    <button type="submit" class="btn btn-morado w-100 fw-bold mb-3 py-2">Registrarse</button>
                     
                     <div class="text-center text-light">
                         ¿Ya tienes cuenta? <a href="Login.html" class="text-primary text-decoration-none fw-bold">Inicia sesión</a>
@@ -97,7 +101,7 @@
                         <img src="Assets/logo.png" alt="Logo Vapro" width="150"> 
                         <img src="Assets/logo-letras.png" alt="Segundo Logo" width="250">
                     </a> 
-                    <p class="text-light text-start">© 2026. Provoste-Vasquez Corporation. Todos los derechos reservados. Todos los juegos en venta siguen las normativas de venta vigentes en la legislación Chilena.</p> 
+                    <p class="text-light text-start">&copy; 2026. Provoste-Vasquez Corporation. Todos los derechos reservados. Todos los juegos en venta siguen las normativas de venta vigentes en la legislación Chilena.</p> 
                 </div> 
 
                 <div class="col mb-3"></div> 
@@ -111,12 +115,72 @@
                         <li class="nav-item mb-2"><a href="Nosotros.html" class="nav-link p-0 text-light">Sobre Nosotros</a></li> 
                         <li class="nav-item mb-2"><a href="Blog.html" class="nav-link p-0 text-light">Blog</a></li> 
                         <li class="nav-item mb-2"><a href="Contacto.html" class="nav-link p-0 text-light">Contacto</a></li> 
+                        <li class="nav-item mb-2"><a href="carrito.html" class="nav-link p-0 text-light">Carrito de Compras</a></li> 
+                        <li class="nav-item mb-2"><a href="admin.html" class="nav-link p-0 text-light fw-bold">Panel Administrador</a></li> 
                     </ul> 
                 </div> 
             </div>
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/validations.js"></script>
+    <script>
+      document.getElementById('form-signup').addEventListener('submit', function(e) {
+          e.preventDefault();
+          let nombre = document.getElementById('regNombre').value.trim();
+          let apellido = document.getElementById('regApellido').value.trim();
+          let email = document.getElementById('regEmail').value.trim();
+          let pass = document.getElementById('regPassword').value;
+          let passConfirm = document.getElementById('regPasswordConfirm').value;
+          let terms = document.getElementById('terms').checked;
+
+          if (!terms) {
+              alert("Debes aceptar los Términos y Condiciones para registrarte.");
+              return;
+          }
+
+          let vCorreo = validarCorreo(email);
+          if (!vCorreo.valido) {
+              alert(vCorreo.mensaje);
+              return;
+          }
+
+          let vPass = validarPassword(pass);
+          if (!vPass.valido) {
+              alert(vPass.mensaje);
+              return;
+          }
+
+          if (pass !== passConfirm) {
+              alert("Las contraseñas no coinciden.");
+              return;
+          }
+
+          let existe = getUsuarios().some(u => u.correo.toLowerCase() === email.toLowerCase());
+          if (existe) {
+              alert("Ya existe una cuenta con este correo institucional.");
+              return;
+          }
+
+          // Guardar nuevo usuario
+          let nuevoUsuario = {
+              run: "CLI" + Date.now().toString().slice(-6),
+              nombre: nombre,
+              apellidos: apellido,
+              correo: email,
+              fechaNacimiento: "",
+              rol: "Cliente",
+              region: "RM",
+              comuna: "Santiago",
+              direccion: "Registrado desde la tienda web"
+          };
+
+          saveUsuario(nuevoUsuario);
+          alert("¡Cuenta creada exitosamente! Ahora puedes iniciar sesión.");
+          window.location.href = "Login.html";
+      });
+    </script>
   </body>
 </html>

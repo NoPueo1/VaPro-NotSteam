@@ -1,45 +1,53 @@
-const juegos = [
-    { titulo: "Cyberpunk 2099", img: "Assets/juegos/cyberpunk2099.png", precio: "$29.99", etiquetas: ["Acción", "RPG"], enlace: "Sitio-Juegos/Cyberpunk2099.html" },
-    { titulo: "Pickcraft 2", img: "Assets/juegos/pickcraft2.png", precio: "$14.99", etiquetas: ["Aventura", "Indie"] },
-    { titulo: "Resident Good 4", img: "Assets/juegos/residentgood4.png", precio: "$39.99", etiquetas: ["Horror", "Supervivencia"] },
-    { titulo: "Fifa 3000", img: "Assets/juegos/fifa3000.png", precio: "$59.99", etiquetas: ["Deportes"] },
-    { titulo: "Office Fighter 6", img: "Assets/juegos/officefighter6.png", precio: "$59.99", etiquetas: ["Lucha"] },
-    { titulo: "Mariana Sisters 2", img: "Assets/juegos/marianasisters2.png", precio: "$9.99", etiquetas: ["Casual"] },
-    { titulo: "Tunels", img: "Assets/juegos/tunels.png", precio: "$19.99", etiquetas: ["Plataformas"] },
-    { titulo: "Juego 8", img: "Assets/juegos/placeholder.jpg", precio: "$4.99", etiquetas: ["Indie"] },
-    { titulo: "Juego 9", img: "Assets/juegos/placeholder.jpg", precio: "$29.99", etiquetas: ["RPG"] },
-    { titulo: "Juego 10", img: "Assets/juegos/placeholder.jpg", precio: "$14.99", etiquetas: ["Aventura"] },
-    { titulo: "Juego 11", img: "Assets/juegos/placeholder.jpg", precio: "$39.99", etiquetas: ["Horror"] },
-    { titulo: "Juego 12", img: "Assets/juegos/placeholder.jpg", precio: "$59.99", etiquetas: ["Deportes"] }
-];
+// Main.js - Catalogo de juegos en la pagina principal
+document.addEventListener("DOMContentLoaded", () => {
+    const contenedor = document.getElementById('galeria-juegos');
+    if (!contenedor) return;
 
-const contenedor = document.getElementById('galeria-juegos');
+    let listaJuegos = (typeof getJuegos === "function") ? getJuegos() : [];
 
-juegos.forEach(juego => {
-    let badgesHTML = '';
-    
-    if (juego.etiquetas) {
-        juego.etiquetas.forEach(etiqueta => {
-            badgesHTML += `<span class="badge bg-secondary me-1">${etiqueta}</span>`;
-        });
-    }
+    contenedor.innerHTML = '';
+    listaJuegos.forEach(juego => {
+        let precioTexto = (typeof formatoPesos === "function") ? formatoPesos(juego.precio) : "$" + juego.precio;
+        let img = juego.imagen || 'Assets/logo.png';
+        let titulo = juego.nombre || 'Juego';
+        let desc = juego.descripcion || '';
 
-    const tarjeta = `
-        <div class="col">
-            <div class="card h-100 game-card bg-dark text-white border-0">
-                <img src="${juego.img}" class="card-img-top" alt="${juego.titulo}">
-                <div class="card-body d-flex flex-column">
-                    <h6 class="card-title fw-bold text-truncate">${juego.titulo}</h6>
-                    <div class="mb-2">
-                        ${badgesHTML}
-                    </div>
-                    <div class="mt-auto d-flex justify-content-between align-items-center">
-                        <span class="fs-5 fw-semibold">${juego.precio}</span>
-                        <a href="${juego.enlace || '#'}" class="btn btn-sm btn-outline-light">Ver Detalles</a>
+        let badgesHTML = '';
+        if (Array.isArray(juego.etiquetas)) {
+            juego.etiquetas.forEach(tag => {
+                badgesHTML += `<span class="badge bg-secondary me-1">${tag}</span>`;
+            });
+        }
+
+        let enlaceDetalle = juego.enlace || `detalle-juego.html?id=${juego.id}`;
+
+        const tarjeta = `
+            <div class="col">
+                <div class="card h-100 game-card bg-dark text-white border-0">
+                    <a href="${enlaceDetalle}">
+                        <img src="${img}" class="card-img-top" alt="${titulo}" style="height: 160px; object-fit: cover;" onerror="this.src='Assets/logo.png'">
+                    </a>
+                    <div class="card-body d-flex flex-column">
+                        <h6 class="card-title fw-bold text-truncate mb-1">${titulo}</h6>
+                        <div class="mb-2">
+                            ${badgesHTML}
+                        </div>
+                        <p class="small text-white-50 text-truncate mb-2">${desc}</p>
+                        <div class="mt-auto d-flex justify-content-between align-items-center pt-2">
+                            <span class="fs-6 fw-semibold text-light">${precioTexto}</span>
+                            <div>
+                                <a href="${enlaceDetalle}" class="btn btn-sm btn-outline-light me-1">
+                                    Ver Detalle
+                                </a>
+                                <button class="btn btn-sm btn-morado" onclick="agregarAlCarrito('${juego.id}', 1)">
+                                    Comprar
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    `;
-    contenedor.innerHTML += tarjeta;
+        `;
+        contenedor.innerHTML += tarjeta;
+    });
 });
