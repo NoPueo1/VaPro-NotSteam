@@ -66,7 +66,7 @@ const juegosPorDefecto = [
         id: "JUEGO-7",
         nombre: "Tunels",
         descripcion: "Explora laberintos subterraneos y supera desafiantes niveles de plataformas.",
-        precio: 19990,
+        precio: 29990,
         imagen: "Assets/juegos/tunels.png",
         gameplay: "Assets/juegos/galeria/tunels-gameplay.jpg",
         etiquetas: ["Plataformas"],
@@ -74,18 +74,42 @@ const juegosPorDefecto = [
     },
     {
         id: "JUEGO-8",
-        nombre: "Portal 2",
-        descripcion: "Juego de puzzles en primera persona con la pistola de portales.",
+        nombre: "Left 4 Live 2",
+        descripcion: "Juego cooperativo para sobrevivir a hordas de personas comunes.",
         precio: 7990,
-        imagen: "https://cdn.cloudflare.steamstatic.com/steam/apps/620/header.jpg",
-        etiquetas: ["Puzzles", "Ciencia Ficción"]
+        imagen: "Assets/juegos/left4live2.png",
+        etiquetas: ["Acción", "Cooperativo"]
     },
     {
         id: "JUEGO-9",
-        nombre: "Left 4 Dead 2",
+        nombre: "Coches Flipantes",
         descripcion: "Juego cooperativo para sobrevivir a hordas de infectados.",
         precio: 5990,
-        imagen: "https://cdn.cloudflare.steamstatic.com/steam/apps/550/header.jpg",
+        imagen: "Assets/juegos/cochesflipantes.png",
+        etiquetas: ["Acción", "Cooperativo"]
+    },
+    {
+        id: "JUEGO-10",
+        nombre: "Enter The FrontRooms",
+        descripcion: "Juego cooperativo para sobrevivir a hordas de infectados.",
+        precio: 5990,
+        imagen: "Assets/juegos/enterthefrontrooms.png",
+        etiquetas: ["Acción", "Cooperativo"]
+    },
+    {
+        id: "JUEGO-11",
+        nombre: "Half Dead 3",
+        descripcion: "Juego cooperativo para sobrevivir a hordas de infectados.",
+        precio: 5990,
+        imagen: "Assets/juegos/halfdead3.png",
+        etiquetas: ["Acción", "Cooperativo"]
+    },
+    {
+        id: "JUEGO-12 ",
+        nombre: "Age of Kingdom 2",
+        descripcion: "Juego cooperativo para sobrevivir a hordas de infectados.",
+        precio: 5990,
+        imagen: "Assets/juegos/ageofkingdom2.png",
         etiquetas: ["Acción", "Cooperativo"]
     }
 ];
