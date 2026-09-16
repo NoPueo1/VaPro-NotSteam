@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vapro - Inicio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="../style.css">
+  </head>
+  <body>
+
+    <!-- HEADER -->
+    <header class="py-3 mb-4"> 
+        <div class="container-fluid d-flex flex-wrap align-items-center justify-content-center justify-content-md-between border-bottom"> 
+            <div class="col-md-3 mb-2 mb-md-0"> 
+                <a href="Index.html" class="d-inline-flex align-items-center link-body-emphasis text-decoration-none">
+                    <img src="../Assets/logo.png" alt="Logo Vapro" width="150">
+                    <img src="../Assets/logo-letras.png" alt="Segundo Logo" width="250">
+                </a> 
+            </div> 
+                <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0"> 
+                    <li><a href="../Index.html" class="nav-link px-2 text-light">Pagina Principal</a></li> 
+                    <li><a href="../Nosotros.html" class="nav-link px-2 text-light">Sobre Nosotros</a></li> 
+                    <li><a href="../Blog.html" class="nav-link px-2 text-light">Blog</a></li> 
+                    <li><a href="../Contacto.html" class="nav-link px-2 text-light">Contacto</a></li> 
+                </ul> 
+            <div class="col-md-3 text-end"> 
+                <a href="../Login.html" class="btn btn-outline-light me-2">Login</a> 
+                <a href="../Sign-up.html" class="btn btn-primary">Sign-up</a>
+            </div> 
+        </div>
+    </header>
+
+    <!-- SECCIÓN: DETALLE DEL JUEGO -->
+    <main class="container my-5">
+        
+        <!-- Botón para regresar -->
+        <a href="../Index.html" class="btn btn-outline-light mb-4">&larr; Volver a la Tienda</a>
+
+        <div class="row g-5">
+            <!-- Columna Izquierda: Imagen del juego -->
+            <div class="col-lg-7">
+                <img src="../Assets/juegos/cyberpunk2099.png" alt="Cyberpunk 2099" class="img-fluid rounded-4 shadow-lg border border-secondary border-opacity-25 w-100">
+            </div>
+
+            <!-- Columna Derecha: Detalles y Compra -->
+            <div class="col-lg-5">
+                <div class="bg-dark bg-opacity-75 p-4 p-md-5 rounded-4 shadow-lg border border-secondary border-opacity-25 h-100 d-flex flex-column" data-bs-theme="dark">
+                    
+                    <!-- Etiquetas y Título -->
+                    <div class="mb-3">
+                        <span class="badge bg-primary fs-6 me-1">Acción</span>
+                        <span class="badge bg-secondary fs-6">RPG</span>
+                    </div>
+                    <h1 class="display-5 fw-bold text-white mb-3">Cyberpunk 2099</h1>
+                    
+                    <!-- Descripción -->
+                    <p class="text-light fs-5 mb-4" style="line-height: 1.6;">
+                        Adéntrate en Neon Abyss, una megalópolis obsesionada con el poder, el glamour y la modificación corporal. Conviértete en un mercenario urbano equipado con mejoras cibernéticas y construye tu leyenda en las calles.
+                    </p>
+
+                    <!-- Desarrollador y Fecha -->
+                    <ul class="list-unstyled text-white-50 mb-4 pb-4 border-bottom border-secondary border-opacity-25">
+                        <li><strong>Desarrollador:</strong> Red Pixel Studios</li>
+                        <li><strong>Fecha de lanzamiento:</strong> 15 Sep, 2026</li>
+                    </ul>
+
+                    <!-- Caja de Compra (Fijada abajo con mt-auto) -->
+                    <div class="mt-auto bg-black bg-opacity-25 p-4 rounded-3 border border-secondary border-opacity-25">
+                        <h2 class="fw-bold text-success mb-3">$29.99</h2>
+                        
+                        <form action="#" class="d-flex align-items-center">
+                            <!-- Selector de cantidad -->
+                            <div class="me-3">
+                                <label for="cantidad" class="form-label text-white-50 small mb-1">Copias</label>
+                                <input type="number" class="form-control text-center fw-bold" id="cantidad" value="1" min="1" max="10" style="width: 80px;" required>
+                            </div>
+                            
+                            <!-- Botón de añadir al carrito -->
+                            <button type="button" class="btn btn-primary btn-lg flex-grow-1 fw-bold mt-3">
+                                Añadir al carrito 🛒
+                            </button>
+                        </form>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="py-5 mt-5">
+        <div class="container-fluid">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
+                <div class="col mb-3"> 
+                    <a href="../Index.html" class="d-flex align-items-center mb-1 link-body-emphasis text-decoration-none" aria-label="Vapro"> 
+                        <img src="../Assets/logo.png" alt="Logo Vapro" width="150"> 
+                        <img src="../Assets/logo-letras.png" alt="Segundo Logo" width="250">
+                    </a> 
+                    <p class="text-light text-start">© 2026. Provoste-Vasquez Corporation. Todos los derechos reservados. Todos los juegos en venta siguen las normativas de venta vigentes en la legislación Chilena.</p> 
+                </div> 
+
+                <div class="col mb-3"></div> 
+
+                <div class="col mb-3"></div> 
+
+                <div class="col mb-3"> 
+                    <h5 class="text-white">Vapro una empresa de Provoste-Vasquez Corporation</h5> 
+                    <ul class="nav flex-column"> 
+                        <li class="nav-item mb-2"><a href="../Index.html" class="nav-link p-0 text-light">Pagina Principal</a></li> 
+                        <li class="nav-item mb-2"><a href="../Nosotros.html" class="nav-link p-0 text-light">Sobre Nosotros</a></li> 
+                        <li class="nav-item mb-2"><a href="../Blog.html" class="nav-link p-0 text-light">Blog</a></li> 
+                        <li class="nav-item mb-2"><a href="../Contacto.html" class="nav-link p-0 text-light">Contacto</a></li> 
+                    </ul> 
+                </div> 
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  </body>
+</html>
