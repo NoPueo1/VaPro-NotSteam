@@ -31,6 +31,63 @@
         </div>
     </header>
 
+    <!-- SECCIÓN: REGISTRO (SIGN-UP) -->
+    <main class="container my-5 d-flex justify-content-center align-items-center" style="min-height: 60vh;">
+        <div class="col-md-8 col-lg-6">
+            <div class="bg-dark bg-opacity-75 p-5 rounded-4 shadow-lg border border-secondary border-opacity-25" data-bs-theme="dark">
+                
+                <div class="text-center mb-4">
+                    <img src="Assets/logo.jpg" alt="Logo Vapro" width="80" class="logo-icono mb-3">
+                    <h2 class="fw-bold text-white">Crear Cuenta</h2>
+                    <p class="text-white-50">Únete a la mejor comunidad gamer de Chile</p>
+                </div>
+                
+                <form action="#">
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <label for="regNombre" class="form-label text-light">Nombre</label>
+                            <input type="text" class="form-control" id="regNombre" placeholder="Gordon" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="regApellido" class="form-label text-light">Apellido</label>
+                            <input type="text" class="form-control" id="regApellido" placeholder="Freeman" required>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="regEmail" class="form-label text-light">Correo Electrónico</label>
+                        <input type="email" class="form-control" id="regEmail" placeholder="tu@correo.com" required>
+                    </div>
+                    
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-6">
+                            <label for="regPassword" class="form-label text-light">Contraseña</label>
+                            <input type="password" class="form-control" id="regPassword" placeholder="••••••••" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="regPasswordConfirm" class="form-label text-light">Confirmar Contraseña</label>
+                            <input type="password" class="form-control" id="regPasswordConfirm" placeholder="••••••••" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-check mb-4">
+                        <input class="form-check-input" type="checkbox" value="" id="terms" required>
+                        <label class="form-check-label text-light" for="terms">
+                            Acepto los <a href="TerminosyCondiciones.html" class="text-primary text-decoration-none">Términos y Condiciones</a> de Vapro.
+                        </label>
+                    </div>
+                    
+                    <button type="button" class="btn btn-primary w-100 fw-bold mb-3">Registrarse</button>
+                    
+                    <div class="text-center text-light">
+                        ¿Ya tienes cuenta? <a href="Login.html" class="text-primary text-decoration-none fw-bold">Inicia sesión</a>
+                    </div>
+                </form>
+                
+            </div>
+        </div>
+    </main>
+
     <!-- FOOTER -->
     <footer class="py-5 mt-5">
         <div class="container-fluid">
