@@ -4,7 +4,7 @@ const juegos = [
     { titulo: "Resident Good 4", img: "Assets/juegos/residentgood4.png", precio: "$39.99", etiquetas: ["Horror", "Supervivencia"] },
     { titulo: "Fifa 3000", img: "Assets/juegos/fifa3000.png", precio: "$59.99", etiquetas: ["Deportes"] },
     { titulo: "Office Fighter 6", img: "Assets/juegos/officefighter6.png", precio: "$59.99", etiquetas: ["Lucha"] },
-    { titulo: "Juego 6", img: "Assets/juegos/placeholder.jpg", precio: "$9.99", etiquetas: ["Casual"] },
+    { titulo: "Mariana Sisters 2", img: "Assets/juegos/marianasisters2.png", precio: "$9.99", etiquetas: ["Casual"] },
     { titulo: "Juego 7", img: "Assets/juegos/placeholder.jpg", precio: "$19.99", etiquetas: ["Acción"] },
     { titulo: "Juego 8", img: "Assets/juegos/placeholder.jpg", precio: "$4.99", etiquetas: ["Indie"] },
     { titulo: "Juego 9", img: "Assets/juegos/placeholder.jpg", precio: "$29.99", etiquetas: ["RPG"] },
