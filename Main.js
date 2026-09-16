@@ -7,7 +7,7 @@ const juegos = [
     { titulo: "Juego 6", img: "Assets/juegos/placeholder.jpg", precio: "$9.99", etiquetas: ["Casual"] },
     { titulo: "Juego 7", img: "Assets/juegos/placeholder.jpg", precio: "$19.99", etiquetas: ["Acción"] },
     { titulo: "Juego 8", img: "Assets/juegos/placeholder.jpg", precio: "$4.99", etiquetas: ["Indie"] },
-    { titulo: "Juego 9", img: "Assets/juegos/placeholder.jpg", precio: "$29.99", margin: "RPG" },
+    { titulo: "Juego 9", img: "Assets/juegos/placeholder.jpg", precio: "$29.99", etiquetas: "RPG" },
     { titulo: "Juego 10", img: "Assets/juegos/placeholder.jpg", precio: "$14.99", etiquetas: ["Aventura"] },
     { titulo: "Juego 11", img: "Assets/juegos/placeholder.jpg", precio: "$39.99", etiquetas: ["Horror"] },
     { titulo: "Juego 12", img: "Assets/juegos/placeholder.jpg", precio: "$59.99", etiquetas: ["Deportes"] }
