@@ -83,34 +83,34 @@ const juegosPorDefecto = [
     {
         id: "JUEGO-9",
         nombre: "Coches Flipantes",
-        descripcion: "Juego cooperativo para sobrevivir a hordas de infectados.",
-        precio: 5990,
+        descripcion: "Carreras alocadas y choques en pistas extremas.",
+        precio: 8990,
         imagen: "Assets/juegos/cochesflipantes.png",
-        etiquetas: ["Acción", "Cooperativo"]
+        etiquetas: ["Carreras", "Arcade"]
     },
     {
         id: "JUEGO-10",
         nombre: "Enter The FrontRooms",
-        descripcion: "Juego cooperativo para sobrevivir a hordas de infectados.",
-        precio: 5990,
+        descripcion: "Explora habitaciones infinitas y sobrevive a entidades desconocidas.",
+        precio: 7990,
         imagen: "Assets/juegos/enterthefrontrooms.png",
-        etiquetas: ["Acción", "Cooperativo"]
+        etiquetas: ["Terror", "Misterio"]
     },
     {
         id: "JUEGO-11",
         nombre: "Half Dead 3",
-        descripcion: "Juego cooperativo para sobrevivir a hordas de infectados.",
-        precio: 5990,
+        descripcion: "Sobrevive a salas trampa en un complejo subterráneo.",
+        precio: 9990,
         imagen: "Assets/juegos/halfdead3.png",
-        etiquetas: ["Acción", "Cooperativo"]
+        etiquetas: ["Acción", "Supervivencia"]
     },
     {
-        id: "JUEGO-12 ",
+        id: "JUEGO-12",
         nombre: "Age of Kingdom 2",
-        descripcion: "Juego cooperativo para sobrevivir a hordas de infectados.",
-        precio: 5990,
+        descripcion: "Estrategia en tiempo real con batallas de castillos medievales.",
+        precio: 14990,
         imagen: "Assets/juegos/ageofkingdom2.png",
-        etiquetas: ["Acción", "Cooperativo"]
+        etiquetas: ["Estrategia"]
     }
 ];
 
@@ -154,7 +154,7 @@ const usuariosPorDefecto = [
 // Cargar datos al storage si es primera vez
 function cargarDatosIniciales() {
     let guardados = localStorage.getItem("lista_juegos");
-    if (!guardados || !guardados.includes("galeria")) {
+    if (!guardados || !guardados.includes("Age of Kingdom 2")) {
         localStorage.setItem("lista_juegos", JSON.stringify(juegosPorDefecto));
     }
     if (!localStorage.getItem("lista_usuarios")) {
