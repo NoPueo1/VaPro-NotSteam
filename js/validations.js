@@ -1,6 +1,6 @@
 // validations.js - Validaciones para los formularios de la tienda
 
-// 1. Validar RUN chileno sin puntos ni guion
+// Validar RUN chileno sin puntos ni guion
 function validarRut(rut) {
     if (!rut || rut.trim() === "") {
         return { valido: false, mensaje: "Ingresa el RUN." };
@@ -41,7 +41,7 @@ function validarRut(rut) {
     return { valido: true, mensaje: "" };
 }
 
-// 2. Validar correo institucional
+// Validar correo institucional
 function validarCorreo(correo) {
     if (!correo || correo.trim() === "") {
         return { valido: false, mensaje: "El correo es obligatorio." };
@@ -58,7 +58,7 @@ function validarCorreo(correo) {
     return { valido: true, mensaje: "" };
 }
 
-// 3. Validar contrasena (entre 4 y 10 caracteres)
+// Validar contrasena (entre 4 y 10 caracteres)
 function validarPassword(pass) {
     if (!pass) {
         return { valido: false, mensaje: "Ingresa tu contraseña." };
@@ -69,7 +69,7 @@ function validarPassword(pass) {
     return { valido: true, mensaje: "" };
 }
 
-// 4. Validar precio (mayor o igual a cero)
+// Validar precio (mayor o igual a cero)
 function validarPrecio(precio) {
     if (precio === "" || precio === null || precio === undefined) {
         return { valido: false, mensaje: "El precio es obligatorio." };
@@ -81,7 +81,7 @@ function validarPrecio(precio) {
     return { valido: true, mensaje: "" };
 }
 
-// 5. Validar texto simple
+// Validar texto simple
 function validarTexto(valor, nombreCampo, max = 100, requerido = true) {
     if (!valor || valor.trim() === "") {
         if (requerido) {

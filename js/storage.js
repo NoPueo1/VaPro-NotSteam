@@ -1,6 +1,4 @@
-// storage.js - Manejo del LocalStorage para juegos, usuarios y carrito
-
-// 1. Datos iniciales de Juegos
+// Juegos iniciales
 const juegosPorDefecto = [
     {
         id: "JUEGO-1",
@@ -114,7 +112,7 @@ const juegosPorDefecto = [
     }
 ];
 
-// 2. Datos iniciales de Usuarios de prueba
+// Usuarios iniciales
 const usuariosPorDefecto = [
     {
         run: "111111111",
