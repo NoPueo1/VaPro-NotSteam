@@ -322,3 +322,9 @@ footer .nav-link:hover {
 .miniatura-galeria:hover {
     border-color: #6a2ca5;
 }
+
+/* Carrusel optimizado */
+.carousel-item img {
+    height: 400px;
+    object-fit: cover;
+}
