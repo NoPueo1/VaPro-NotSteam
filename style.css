@@ -53,6 +53,36 @@ header .nav-link.fw-bold {
     border: 1px solid #4a2775;
 }
 
+/* UI/UX Logo y Marca */
+.brand-logo-img {
+    height: 40px;
+    width: 40px;
+    object-fit: contain;
+    transition: transform 0.15s ease;
+}
+
+.brand-text-img {
+    height: 30px;
+    width: auto;
+    object-fit: contain;
+}
+
+.brand-container:hover .brand-logo-img {
+    transform: scale(1.05);
+}
+
+.footer-logo-img {
+    height: 42px;
+    width: 42px;
+    object-fit: contain;
+}
+
+.footer-text-img {
+    height: 28px;
+    width: auto;
+    object-fit: contain;
+}
+
 /* Footer clásico */
 footer {
     background: linear-gradient(to bottom, #140920 0%, #0a0410 100%);
