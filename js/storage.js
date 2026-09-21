@@ -108,6 +108,7 @@ const juegosPorDefecto = [
         stockCritico: 5,
         categoria: "Acción",
         imagen: "Assets/juegos/left4live2.png",
+        gameplay: "Assets/juegos/galeria/left4live2-gameplay.jpg",
         etiquetas: ["Acción", "Cooperativo"],
         enlace: "Sitio-Juegos/Left4Live2.html"
     },
@@ -121,6 +122,7 @@ const juegosPorDefecto = [
         stockCritico: 4,
         categoria: "Carreras",
         imagen: "Assets/juegos/cochesflipantes.png",
+        gameplay: "Assets/juegos/galeria/cochesflipantes-gameplay.jpg",
         etiquetas: ["Carreras", "Arcade"],
         enlace: "Sitio-Juegos/CochesFlipantes.html"
     },
@@ -134,6 +136,7 @@ const juegosPorDefecto = [
         stockCritico: 3,
         categoria: "Horror",
         imagen: "Assets/juegos/enterthefrontrooms.png",
+        gameplay: "Assets/juegos/galeria/enterthefrontrooms-gameplay.jpg",
         etiquetas: ["Terror", "Misterio"],
         enlace: "Sitio-Juegos/EnterTheFrontRooms.html"
     },
@@ -147,6 +150,7 @@ const juegosPorDefecto = [
         stockCritico: 2,
         categoria: "Acción",
         imagen: "Assets/juegos/halfdead3.png",
+        gameplay: "Assets/juegos/galeria/halfdead3-gameplay.jpg",
         etiquetas: ["Acción", "Supervivencia"],
         enlace: "Sitio-Juegos/HalfDead3.html"
     },
@@ -160,6 +164,7 @@ const juegosPorDefecto = [
         stockCritico: 5,
         categoria: "Estrategia",
         imagen: "Assets/juegos/ageofkingdom2.png",
+        gameplay: "Assets/juegos/galeria/ageofkingdom2-gameplay.jpg",
         etiquetas: ["Estrategia"],
         enlace: "Sitio-Juegos/AgeOfKingdom2.html"
     }
