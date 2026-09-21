@@ -221,33 +221,28 @@
               return;
           }
 
-          let vRun = validarRut(run);
-          if (!vRun.valido) {
-              alert(vRun.mensaje);
+          if (!validarRut(run)) {
+              alert("El RUN no es válido. Debe ser sin puntos ni guión (ej: 19011022K).");
               return;
           }
 
-          let vCorreo = validarCorreo(email);
-          if (!vCorreo.valido) {
-              alert(vCorreo.mensaje);
+          if (!validarCorreo(email)) {
+              alert("El correo debe ser institucional (@duoc.cl, @profesor.duoc.cl o @gmail.com).");
               return;
           }
 
-          let vNombre = validarTexto(nombre, "Nombre", 50, true);
-          if (!vNombre.valido) {
-              alert(vNombre.mensaje);
+          if (!nombre) {
+              alert("Debes ingresar tu nombre.");
               return;
           }
 
-          let vApellido = validarTexto(apellido, "Apellidos", 100, true);
-          if (!vApellido.valido) {
-              alert(vApellido.mensaje);
+          if (!apellido) {
+              alert("Debes ingresar tus apellidos.");
               return;
           }
 
-          let vPass = validarPassword(pass);
-          if (!vPass.valido) {
-              alert(vPass.mensaje);
+          if (!validarPassword(pass)) {
+              alert("La contraseña debe tener entre 4 y 10 caracteres.");
               return;
           }
 
@@ -266,9 +261,8 @@
               return;
           }
 
-          let vDir = validarTexto(direccion, "Dirección", 300, true);
-          if (!vDir.valido) {
-              alert(vDir.mensaje);
+          if (!direccion) {
+              alert("Debes ingresar tu dirección.");
               return;
           }
 

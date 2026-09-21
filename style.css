@@ -1,21 +1,8 @@
-/* Estilos generales de la tienda Vapro */
-
-:root {
-    --bg-oscuro: #180f26;
-    --bg-panel: #241639;
-    --bg-header: #140c21;
-    --bg-footer: #120a1c;
-    --borde-morado: #432b66;
-    --morado-btn: #542285;
-    --morado-btn-hover: #662a9f;
-    --morado-btn-borde: #7a33bd;
-    --texto-principal: #ffffff;
-    --texto-secundario: #c5bcd6;
-}
+/* Estilos generales de la tienda Vapro - Estilo clasico 2010 */
 
 body {
-    background-color: var(--bg-oscuro);
-    color: var(--texto-principal);
+    background-color: #0e0917;
+    color: #ffffff;
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
     min-height: 100vh;
     display: flex;
@@ -24,12 +11,12 @@ body {
 
 /* Header */
 header {
-    background-color: var(--bg-header);
-    border-bottom: 2px solid var(--borde-morado);
+    background-color: #140c20;
+    border-bottom: 2px solid #2c1742;
 }
 
 header .nav-link {
-    color: var(--texto-secundario) !important;
+    color: #c0b5d0 !important;
 }
 
 header .nav-link:hover {
@@ -38,13 +25,13 @@ header .nav-link:hover {
 
 /* Footer */
 footer {
-    background-color: var(--bg-footer);
-    border-top: 2px solid var(--borde-morado);
+    background-color: #0d0715;
+    border-top: 2px solid #2c1742;
     margin-top: auto;
 }
 
 footer .nav-link {
-    color: var(--texto-secundario) !important;
+    color: #c0b5d0 !important;
 }
 
 footer .nav-link:hover {
@@ -53,66 +40,64 @@ footer .nav-link:hover {
 
 /* Tarjetas de juego en tienda */
 .game-card {
-    background-color: var(--bg-panel) !important;
-    border: 1px solid var(--borde-morado) !important;
+    background-color: #180f26 !important;
+    border: 1px solid #301a49 !important;
     border-radius: 4px;
-    transition: border-color 0.15s ease;
 }
 
 .game-card:hover {
-    border-color: #8c45d6 !important;
+    border-color: #5d2397 !important;
 }
 
 /* Panel Administrador y tarjetas de contenido */
 .card-admin {
-    background-color: var(--bg-panel) !important;
-    border: 1px solid var(--borde-morado) !important;
+    background-color: #180f26 !important;
+    border: 1px solid #301a49 !important;
     border-radius: 4px;
     color: #ffffff;
 }
 
 .card-header-morado {
-    background-color: #2d1c47 !important;
+    background-color: #221437 !important;
     color: #ffffff;
     font-weight: bold;
-    border-bottom: 1px solid var(--borde-morado);
+    border-bottom: 1px solid #301a49;
 }
 
 /* Menu lateral admin */
 .list-group-admin .list-group-item {
-    background-color: #1e1230;
-    border-color: #382455;
-    color: var(--texto-secundario);
+    background-color: #140c20;
+    border-color: #2c1742;
+    color: #c0b5d0;
 }
 
 .list-group-admin .list-group-item.active {
-    background-color: var(--morado-btn) !important;
-    border-color: var(--morado-btn-borde) !important;
+    background-color: #4a1c78 !important;
+    border-color: #5d2397 !important;
     color: #ffffff !important;
     font-weight: bold;
 }
 
 .list-group-admin .list-group-item:hover:not(.active) {
-    background-color: #291942;
+    background-color: #1d122e;
     color: #ffffff;
 }
 
 /* Boton morado clasico */
 .btn-morado {
-    background-color: var(--morado-btn);
-    border-color: var(--morado-btn-borde);
+    background-color: #4a1c78;
+    border-color: #38145c;
     color: #ffffff;
     font-weight: bold;
     border-radius: 4px;
-    transition: background-color 0.15s ease, border-color 0.15s ease;
 }
 
 .btn-morado:hover,
 .btn-morado.active,
 .btn-morado:active,
 .btn-morado:focus {
-    background-color: var(--morado-btn-hover);
-    border-color: #984ee6;
+    background-color: #5d2397;
+    border-color: #702cb8;
     color: #ffffff;
 }
 
@@ -120,10 +105,10 @@ footer .nav-link:hover {
 .table-admin {
     --bs-table-color: #ffffff;
     --bs-table-bg: transparent;
-    --bs-table-border-color: #382455;
+    --bs-table-border-color: #2c1742;
     --bs-table-striped-bg: rgba(255, 255, 255, 0.02);
     --bs-table-striped-color: #ffffff;
-    --bs-table-hover-bg: #2d1c47;
+    --bs-table-hover-bg: #221437;
     --bs-table-hover-color: #ffffff;
     color: #ffffff !important;
 }
@@ -136,40 +121,40 @@ footer .nav-link:hover {
 
 .table-admin .text-muted,
 .table-admin small {
-    color: #b5a9cc !important;
+    color: #a89cb8 !important;
 }
 
 .table-admin thead th {
-    background-color: #2d1c47;
+    background-color: #221437;
     color: #ffffff !important;
-    border-bottom: 2px solid var(--borde-morado);
+    border-bottom: 2px solid #301a49;
 }
 
 /* Modales */
 .modal-admin {
-    background-color: #201333;
-    border: 1px solid var(--borde-morado);
+    background-color: #180f26;
+    border: 1px solid #301a49;
     border-radius: 4px;
     color: #ffffff;
 }
 
 .modal-admin .form-control,
 .modal-admin .form-select {
-    background-color: #160d24;
-    border-color: #3e275f;
+    background-color: #12091d;
+    border-color: #301a49;
     color: #ffffff;
 }
 
 .modal-admin .form-control:focus,
 .modal-admin .form-select:focus {
-    background-color: #1a102b;
-    border-color: var(--morado-btn-borde);
+    background-color: #160c24;
+    border-color: #5d2397;
     color: #ffffff;
     box-shadow: none;
 }
 
 .modal-admin .form-control::placeholder {
-    color: #8878a3;
+    color: #7b6d8f;
 }
 
 /* Miniaturas de juegos */
@@ -177,16 +162,16 @@ footer .nav-link:hover {
     width: 50px;
     height: 40px;
     object-fit: cover;
-    border: 1px solid var(--borde-morado);
+    border: 1px solid #301a49;
     border-radius: 3px;
 }
 
 .foto-preview {
     max-width: 140px;
     max-height: 140px;
-    border: 1px solid var(--borde-morado);
+    border: 1px solid #301a49;
     padding: 3px;
-    background-color: #160d24;
+    background-color: #12091d;
     border-radius: 3px;
 }
 
@@ -207,10 +192,9 @@ footer .nav-link:hover {
     object-fit: cover;
     cursor: pointer;
     border-radius: 3px;
-    border: 1px solid var(--borde-morado);
-    transition: border-color 0.15s ease;
+    border: 1px solid #301a49;
 }
 
 .miniatura-galeria:hover {
-    border-color: #8c45d6;
+    border-color: #5d2397;
 }

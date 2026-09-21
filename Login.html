@@ -121,15 +121,12 @@
           let email = document.getElementById('loginEmail').value.trim();
           let pass = document.getElementById('loginPassword').value.trim();
 
-          let vCorreo = validarCorreo(email);
-          let vPass = validarPassword(pass);
-
-          if (!vCorreo.valido) {
-              alert(vCorreo.mensaje);
+          if (!validarCorreo(email)) {
+              alert("El correo debe ser institucional (@duoc.cl, @profesor.duoc.cl o @gmail.com).");
               return;
           }
-          if (!vPass.valido) {
-              alert(vPass.mensaje);
+          if (!validarPassword(pass)) {
+              alert("La contraseña debe tener entre 4 y 10 caracteres.");
               return;
           }
 
