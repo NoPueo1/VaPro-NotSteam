@@ -20,6 +20,7 @@
             </div> 
             <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0"> 
                 <li><a href="Index.html" class="nav-link px-2 text-light">Pagina Principal</a></li> 
+                <li><a href="Index.html#galeria-juegos" class="nav-link px-2 text-light">Productos</a></li> 
                 <li><a href="Nosotros.html" class="nav-link px-2 text-light">Sobre Nosotros</a></li> 
                 <li><a href="Blog.html" class="nav-link px-2 text-light">Blog</a></li> 
                 <li><a href="Contacto.html" class="nav-link px-2 text-light">Contacto</a></li> 
@@ -45,25 +46,32 @@
                     <p class="text-white-50">Únete a la mejor comunidad gamer de Chile</p>
                 </div>
                 
-                <form id="form-signup">
+                <form id="form-signup" novalidate>
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <label for="regRun" class="form-label text-light">RUN</label>
+                            <input type="text" class="form-control" id="regRun" placeholder="19011022K" maxlength="9" required>
+                            <small class="form-text text-white-50">Sin puntos ni guión (7 a 9 caracteres)</small>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="regEmail" class="form-label text-light">Correo Institucional</label>
+                            <input type="email" class="form-control" id="regEmail" placeholder="tu@correo.com" maxlength="100" required>
+                            <small class="form-text text-white-50">@duoc.cl, @profesor.duoc.cl o @gmail.com</small>
+                        </div>
+                    </div>
+
                     <div class="row g-3 mb-3">
                         <div class="col-md-6">
                             <label for="regNombre" class="form-label text-light">Nombre</label>
-                            <input type="text" class="form-control" id="regNombre" placeholder="Gordon" required>
+                            <input type="text" class="form-control" id="regNombre" placeholder="Gordon" maxlength="50" required>
                         </div>
                         <div class="col-md-6">
-                            <label for="regApellido" class="form-label text-light">Apellido</label>
-                            <input type="text" class="form-control" id="regApellido" placeholder="Freeman" required>
+                            <label for="regApellido" class="form-label text-light">Apellidos</label>
+                            <input type="text" class="form-control" id="regApellido" placeholder="Freeman" maxlength="100" required>
                         </div>
                     </div>
-                    
-                    <div class="mb-3">
-                        <label for="regEmail" class="form-label text-light">Correo Electrónico</label>
-                        <input type="email" class="form-control" id="regEmail" placeholder="tu@correo.com" required>
-                        <small class="form-text text-white-50">Permitidos: @duoc.cl, @profesor.duoc.cl o @gmail.com</small>
-                    </div>
-                    
-                    <div class="row g-3 mb-4">
+
+                    <div class="row g-3 mb-3">
                         <div class="col-md-6">
                             <label for="regPassword" class="form-label text-light">Contraseña</label>
                             <input type="password" class="form-control" id="regPassword" placeholder="••••••••" required>
@@ -73,16 +81,49 @@
                             <input type="password" class="form-control" id="regPasswordConfirm" placeholder="••••••••" required>
                         </div>
                     </div>
-                    
+
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <label for="regFechaNacimiento" class="form-label text-light">Fecha de Nacimiento</label>
+                            <input type="date" class="form-control" id="regFechaNacimiento">
+                            <small class="form-text text-white-50">Opcional</small>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="regTelefono" class="form-label text-light">Teléfono</label>
+                            <input type="tel" class="form-control" id="regTelefono" placeholder="+56 9 1234 5678">
+                            <small class="form-text text-white-50">Opcional</small>
+                        </div>
+                    </div>
+
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <label for="regRegion" class="form-label text-light">Región</label>
+                            <select class="form-select" id="regRegion" required>
+                                <option value="">Selecciona una región...</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="regComuna" class="form-label text-light">Comuna</label>
+                            <select class="form-select" id="regComuna" disabled required>
+                                <option value="">Primero selecciona una región</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="regDireccion" class="form-label text-light">Dirección</label>
+                        <input type="text" class="form-control" id="regDireccion" placeholder="Calle, número, depto o referencia..." maxlength="300" required>
+                    </div>
+
                     <div class="form-check mb-4">
                         <input class="form-check-input" type="checkbox" id="terms" required>
                         <label class="form-check-label text-light" for="terms">
                             Acepto los <a href="TerminosyCondiciones.html" class="text-primary text-decoration-none">Términos y Condiciones</a> de Vapro.
                         </label>
                     </div>
-                    
+
                     <button type="submit" class="btn btn-morado w-100 fw-bold mb-3 py-2">Registrarse</button>
-                    
+
                     <div class="text-center text-light">
                         ¿Ya tienes cuenta? <a href="Login.html" class="text-primary text-decoration-none fw-bold">Inicia sesión</a>
                     </div>
@@ -124,16 +165,55 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/chile-data.js"></script>
     <script src="js/storage.js"></script>
     <script src="js/validations.js"></script>
     <script>
+      // Poblar regiones
+      let regionSelect = document.getElementById("regRegion");
+      let comunaSelect = document.getElementById("regComuna");
+
+      if (typeof REGIONES_CHILE !== "undefined" && regionSelect) {
+          let opciones = `<option value="">Selecciona una región...</option>`;
+          for (let i = 0; i < REGIONES_CHILE.length; i++) {
+              let r = REGIONES_CHILE[i];
+              opciones += `<option value="${r.id}">${r.nombre}</option>`;
+          }
+          regionSelect.innerHTML = opciones;
+
+          regionSelect.addEventListener("change", function(e) {
+              let id = e.target.value;
+              if (!id) {
+                  comunaSelect.innerHTML = `<option value="">Primero selecciona una región</option>`;
+                  comunaSelect.disabled = true;
+                  return;
+              }
+              let reg = REGIONES_CHILE.find(r => r.id === id);
+              if (!reg) return;
+
+              comunaSelect.disabled = false;
+              let comunasHtml = `<option value="">Selecciona una comuna...</option>`;
+              for (let j = 0; j < reg.comunas.length; j++) {
+                  let c = reg.comunas[j];
+                  comunasHtml += `<option value="${c}">${c}</option>`;
+              }
+              comunaSelect.innerHTML = comunasHtml;
+          });
+      }
+
       document.getElementById('form-signup').addEventListener('submit', function(e) {
           e.preventDefault();
+          let run = document.getElementById('regRun').value.trim().toUpperCase();
+          let email = document.getElementById('regEmail').value.trim();
           let nombre = document.getElementById('regNombre').value.trim();
           let apellido = document.getElementById('regApellido').value.trim();
-          let email = document.getElementById('regEmail').value.trim();
           let pass = document.getElementById('regPassword').value;
           let passConfirm = document.getElementById('regPasswordConfirm').value;
+          let fechaNacimiento = document.getElementById('regFechaNacimiento').value;
+          let telefono = document.getElementById('regTelefono').value.trim();
+          let region = document.getElementById('regRegion').value;
+          let comuna = document.getElementById('regComuna').value;
+          let direccion = document.getElementById('regDireccion').value.trim();
           let terms = document.getElementById('terms').checked;
 
           if (!terms) {
@@ -141,9 +221,27 @@
               return;
           }
 
+          let vRun = validarRut(run);
+          if (!vRun.valido) {
+              alert(vRun.mensaje);
+              return;
+          }
+
           let vCorreo = validarCorreo(email);
           if (!vCorreo.valido) {
               alert(vCorreo.mensaje);
+              return;
+          }
+
+          let vNombre = validarTexto(nombre, "Nombre", 50, true);
+          if (!vNombre.valido) {
+              alert(vNombre.mensaje);
+              return;
+          }
+
+          let vApellido = validarTexto(apellido, "Apellidos", 100, true);
+          if (!vApellido.valido) {
+              alert(vApellido.mensaje);
               return;
           }
 
@@ -158,23 +256,46 @@
               return;
           }
 
-          let existe = getUsuarios().some(u => u.correo.toLowerCase() === email.toLowerCase());
-          if (existe) {
+          if (!region) {
+              alert("Debes seleccionar una región.");
+              return;
+          }
+
+          if (!comuna) {
+              alert("Debes seleccionar una comuna.");
+              return;
+          }
+
+          let vDir = validarTexto(direccion, "Dirección", 300, true);
+          if (!vDir.valido) {
+              alert(vDir.mensaje);
+              return;
+          }
+
+          let usuarios = getUsuarios();
+          if (usuarios.some(u => u.run.toUpperCase() === run)) {
+              alert("Este RUN ya está registrado en el sistema.");
+              return;
+          }
+
+          if (usuarios.some(u => u.correo.toLowerCase() === email.toLowerCase())) {
               alert("Ya existe una cuenta con este correo institucional.");
               return;
           }
 
           // Guardar nuevo usuario
           let nuevoUsuario = {
-              run: "CLI" + Date.now().toString().slice(-6),
+              run: run,
               nombre: nombre,
               apellidos: apellido,
               correo: email,
-              fechaNacimiento: "",
+              password: pass,
+              fechaNacimiento: fechaNacimiento || "",
+              telefono: telefono || "",
               rol: "Cliente",
-              region: "RM",
-              comuna: "Santiago",
-              direccion: "Registrado desde la tienda web"
+              region: region,
+              comuna: comuna,
+              direccion: direccion
           };
 
           saveUsuario(nuevoUsuario);

@@ -1,13 +1,28 @@
 // admin.js - Logica del panel de administracion para juegos y usuarios
 
-// Proteger vistas del panel: solo acceso para Administrador
+// Proteger vistas del panel: acceso para Administrador y Vendedor
 let usuarioSesion = (typeof getCurrentUser === "function") ? getCurrentUser() : null;
-if (!usuarioSesion || usuarioSesion.rol !== "Administrador") {
+if (!usuarioSesion || (usuarioSesion.rol !== "Administrador" && usuarioSesion.rol !== "Vendedor")) {
     alert("Debes iniciar sesión como Administrador.");
     window.location.href = "Login.html";
 }
 
+// Si es Vendedor, restringir acceso a usuarios
+if (usuarioSesion && usuarioSesion.rol === "Vendedor") {
+    if (window.location.pathname.includes("admin-usuarios.html")) {
+        alert("Acceso denegado. Los vendedores solo pueden gestionar productos.");
+        window.location.href = "admin-juegos.html";
+    }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
+    // Ocultar acceso a usuarios si el rol es Vendedor
+    if (usuarioSesion && usuarioSesion.rol === "Vendedor") {
+        document.querySelectorAll("a[href='admin-usuarios.html']").forEach(el => {
+            el.style.display = "none";
+        });
+    }
+
     if (document.getElementById("tabla-juegos-body") || document.getElementById("vista-juegos")) {
         iniciarMantenedorJuegos();
     }
@@ -22,7 +37,7 @@ let imagenActualBase64 = "";
 function iniciarMantenedorJuegos() {
     dibujarTablaJuegos();
 
-    // Buscador por nombre
+    // Buscador por nombre o código
     let buscar = document.getElementById("buscar-juego");
     if (buscar) {
         buscar.addEventListener("keyup", () => {
@@ -30,6 +45,8 @@ function iniciarMantenedorJuegos() {
             let lista = getJuegos();
             let filtrados = lista.filter(j => 
                 j.nombre.toLowerCase().includes(texto) || 
+                (j.codigo && j.codigo.toLowerCase().includes(texto)) ||
+                (j.categoria && j.categoria.toLowerCase().includes(texto)) ||
                 (j.descripcion && j.descripcion.toLowerCase().includes(texto))
             );
             dibujarTablaJuegos(filtrados);
@@ -91,7 +108,7 @@ function dibujarTablaJuegos(lista = null) {
     if (!tbody) return;
 
     if (juegos.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="5" class="text-center text-white-50 py-4">No hay juegos en la lista.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="7" class="text-center text-white-50 py-4">No hay juegos en la lista.</td></tr>`;
         return;
     }
 
@@ -99,22 +116,29 @@ function dibujarTablaJuegos(lista = null) {
     for (let i = 0; i < juegos.length; i++) {
         let j = juegos[i];
         let precioFmt = (typeof formatoPesos === "function") ? formatoPesos(j.precio) : "$" + j.precio;
-        let desc = j.descripcion || "Sin descripción";
+        let codigo = j.codigo || j.id;
+        let cat = j.categoria || (j.etiquetas ? j.etiquetas[0] : "General");
+        let stock = (j.stock !== undefined) ? j.stock : 10;
+        let stockCritico = (j.stockCritico !== undefined) ? j.stockCritico : 0;
+        let alertaStock = (stock <= stockCritico) ? `<span class="badge bg-danger ms-1">Crítico</span>` : "";
 
         filas += `
             <tr>
                 <td style="width: 60px;">
                     <img src="${j.imagen}" alt="${j.nombre}" class="foto-juego-thumb" onerror="this.src='Assets/logo.png'">
                 </td>
+                <td><code class="text-warning bg-black bg-opacity-50 px-2 py-1 rounded">${codigo}</code></td>
                 <td>
-                    <strong class="text-white">${j.nombre}</strong><br>
-                    <small class="text-white-50">${j.id}</small>
+                    <strong class="text-white">${j.nombre}</strong>
                 </td>
                 <td>
-                    <span class="text-light">${desc}</span>
+                    <span class="badge bg-secondary">${cat}</span>
                 </td>
                 <td>
                     <span class="text-warning fw-bold">${precioFmt}</span>
+                </td>
+                <td>
+                    <span class="text-light">${stock}</span> ${alertaStock}
                 </td>
                 <td class="text-end">
                     <button class="btn btn-sm btn-outline-info me-1" onclick="abrirModalEditarJuego('${j.id}')">
@@ -144,7 +168,7 @@ function abrirModalNuevoJuego() {
         preview.classList.add("d-none");
     }
 
-    document.querySelectorAll("#form-juego .form-control").forEach(el => {
+    document.querySelectorAll("#form-juego .form-control, #form-juego .form-select").forEach(el => {
         el.classList.remove("is-valid", "is-invalid");
     });
 
@@ -158,9 +182,13 @@ function abrirModalEditarJuego(id) {
 
     document.getElementById("modalJuegoTitulo").textContent = "Editar Juego";
     document.getElementById("juego-id").value = juego.id;
+    document.getElementById("juego-codigo").value = juego.codigo || juego.id;
+    document.getElementById("juego-categoria").value = juego.categoria || (juego.etiquetas ? juego.etiquetas[0] : "");
     document.getElementById("juego-nombre").value = juego.nombre;
     document.getElementById("juego-descripcion").value = juego.descripcion || "";
     document.getElementById("juego-precio").value = juego.precio;
+    document.getElementById("juego-stock").value = (juego.stock !== undefined) ? juego.stock : 10;
+    document.getElementById("juego-stock-critico").value = (juego.stockCritico !== undefined) ? juego.stockCritico : 3;
 
     imagenActualBase64 = juego.imagen || "";
     let preview = document.getElementById("juego-preview");
@@ -169,7 +197,7 @@ function abrirModalEditarJuego(id) {
         preview.classList.remove("d-none");
     }
 
-    document.querySelectorAll("#form-juego .form-control").forEach(el => {
+    document.querySelectorAll("#form-juego .form-control, #form-juego .form-select").forEach(el => {
         el.classList.remove("is-valid", "is-invalid");
     });
 
@@ -179,9 +207,22 @@ function abrirModalEditarJuego(id) {
 
 function guardarJuego() {
     let id = document.getElementById("juego-id").value;
+    let codigoInput = document.getElementById("juego-codigo");
+    let categoriaSelect = document.getElementById("juego-categoria");
     let nombreInput = document.getElementById("juego-nombre");
     let descInput = document.getElementById("juego-descripcion");
     let precioInput = document.getElementById("juego-precio");
+    let stockInput = document.getElementById("juego-stock");
+    let stockCriticoInput = document.getElementById("juego-stock-critico");
+
+    let vCodigo = { valido: true, mensaje: "" };
+    if (!codigoInput.value || codigoInput.value.trim().length < 3) {
+        vCodigo = { valido: false, mensaje: "El código debe tener al menos 3 caracteres." };
+    }
+    marcarCampo(codigoInput, vCodigo);
+
+    let vCategoria = { valido: !!categoriaSelect.value, mensaje: "Selecciona una categoría." };
+    marcarCampo(categoriaSelect, vCategoria);
 
     let vNombre = validarTexto(nombreInput.value, "Nombre del juego", 100, true);
     marcarCampo(nombreInput, vNombre);
@@ -192,19 +233,39 @@ function guardarJuego() {
     let vPrecio = validarPrecio(precioInput.value);
     marcarCampo(precioInput, vPrecio);
 
+    let vStock = { valido: true, mensaje: "" };
+    let stockVal = Number(stockInput.value);
+    if (stockInput.value === "" || isNaN(stockVal) || stockVal < 0 || !Number.isInteger(stockVal)) {
+        vStock = { valido: false, mensaje: "El stock debe ser un número entero mayor o igual a 0." };
+    }
+    marcarCampo(stockInput, vStock);
+
+    let vStockCritico = { valido: true, mensaje: "" };
+    if (stockCriticoInput.value !== "") {
+        let scVal = Number(stockCriticoInput.value);
+        if (isNaN(scVal) || scVal < 0 || !Number.isInteger(scVal)) {
+            vStockCritico = { valido: false, mensaje: "El stock crítico debe ser un número entero mayor o igual a 0." };
+        }
+    }
+    marcarCampo(stockCriticoInput, vStockCritico);
+
     if (!imagenActualBase64) {
         imagenActualBase64 = "Assets/logo.png";
     }
 
-    if (!vNombre.valido || !vDesc.valido || !vPrecio.valido) {
+    if (!vCodigo.valido || !vCategoria.valido || !vNombre.valido || !vDesc.valido || !vPrecio.valido || !vStock.valido || !vStockCritico.valido) {
         return;
     }
 
     let juego = {
         id: id || undefined,
+        codigo: codigoInput.value.trim().toUpperCase(),
+        categoria: categoriaSelect.value,
         nombre: nombreInput.value.trim(),
         descripcion: descInput.value.trim(),
         precio: Number(precioInput.value),
+        stock: parseInt(stockInput.value, 10),
+        stockCritico: stockCriticoInput.value !== "" ? parseInt(stockCriticoInput.value, 10) : 0,
         imagen: imagenActualBase64
     };
 

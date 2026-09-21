@@ -2,9 +2,13 @@
 const juegosPorDefecto = [
     {
         id: "JUEGO-1",
+        codigo: "CP2099",
         nombre: "Cyberpunk 2099",
         descripcion: "Entra en el distopico mundo de Cyberpunk 2099.",
         precio: 29990,
+        stock: 20,
+        stockCritico: 5,
+        categoria: "Acción",
         imagen: "Assets/juegos/cyberpunk2099.png",
         gameplay: "Assets/juegos/galeria/cyberpunk2099-gameplay.jpg",
         etiquetas: ["Acción", "RPG"],
@@ -12,9 +16,13 @@ const juegosPorDefecto = [
     },
     {
         id: "JUEGO-2",
+        codigo: "PC2000",
         nombre: "Pickcraft 2",
         descripcion: "Mas bloques que nunca, la aventura te espera.",
         precio: 14990,
+        stock: 15,
+        stockCritico: 3,
+        categoria: "Aventura",
         imagen: "Assets/juegos/pickcraft2.png",
         gameplay: "Assets/juegos/galeria/pickcraft2-gameplay.jpg",
         etiquetas: ["Aventura", "Indie"],
@@ -22,9 +30,13 @@ const juegosPorDefecto = [
     },
     {
         id: "JUEGO-3",
+        codigo: "RG4000",
         nombre: "Resident Good 4",
         descripcion: "Leon nunca fue tan feliz como en Resident Good 4.",
         precio: 39990,
+        stock: 10,
+        stockCritico: 4,
+        categoria: "Horror",
         imagen: "Assets/juegos/residentgood4.png",
         gameplay: "Assets/juegos/galeria/residentgood4-gameplay.jpg",
         etiquetas: ["Horror", "Supervivencia"],
@@ -32,9 +44,13 @@ const juegosPorDefecto = [
     },
     {
         id: "JUEGO-4",
+        codigo: "F3000",
         nombre: "Fifa 3000",
         descripcion: "El simulador de futbol definitivo de Provoste-Vasquez.",
         precio: 59990,
+        stock: 30,
+        stockCritico: 5,
+        categoria: "Deportes",
         imagen: "Assets/juegos/fifa3000.png",
         gameplay: "Assets/juegos/galeria/fifa3000-gameplay.jpg",
         etiquetas: ["Deportes"],
@@ -42,9 +58,13 @@ const juegosPorDefecto = [
     },
     {
         id: "JUEGO-5",
+        codigo: "OF6000",
         nombre: "Office Fighter 6",
         descripcion: "El torneo de lucha definitivo entre colegas de oficina.",
         precio: 59990,
+        stock: 12,
+        stockCritico: 3,
+        categoria: "Lucha",
         imagen: "Assets/juegos/officefighter6.png",
         gameplay: "Assets/juegos/galeria/officefighter6-gameplay.jpg",
         etiquetas: ["Lucha"],
@@ -52,9 +72,13 @@ const juegosPorDefecto = [
     },
     {
         id: "JUEGO-6",
+        codigo: "MS2000",
         nombre: "Mariana Sisters 2",
         descripcion: "Aventura de plataformas y saltos de Mariana y sus hermanas.",
         precio: 9990,
+        stock: 8,
+        stockCritico: 2,
+        categoria: "Casual",
         imagen: "Assets/juegos/marianasisters2.png",
         gameplay: "Assets/juegos/galeria/marianasisters2-gameplay.jpg",
         etiquetas: ["Casual"],
@@ -62,9 +86,13 @@ const juegosPorDefecto = [
     },
     {
         id: "JUEGO-7",
+        codigo: "TUNELS",
         nombre: "Tunels",
         descripcion: "Explora laberintos subterraneos y supera desafiantes niveles de plataformas.",
         precio: 29990,
+        stock: 14,
+        stockCritico: 3,
+        categoria: "Aventura",
         imagen: "Assets/juegos/tunels.png",
         gameplay: "Assets/juegos/galeria/tunels-gameplay.jpg",
         etiquetas: ["Plataformas"],
@@ -72,41 +100,61 @@ const juegosPorDefecto = [
     },
     {
         id: "JUEGO-8",
+        codigo: "L4L200",
         nombre: "Left 4 Live 2",
         descripcion: "Juego cooperativo para sobrevivir a hordas de personas comunes.",
         precio: 7990,
+        stock: 25,
+        stockCritico: 5,
+        categoria: "Acción",
         imagen: "Assets/juegos/left4live2.png",
         etiquetas: ["Acción", "Cooperativo"]
     },
     {
         id: "JUEGO-9",
+        codigo: "CFLIP",
         nombre: "Coches Flipantes",
         descripcion: "Carreras alocadas y choques en pistas extremas.",
         precio: 8990,
+        stock: 18,
+        stockCritico: 4,
+        categoria: "Carreras",
         imagen: "Assets/juegos/cochesflipantes.png",
         etiquetas: ["Carreras", "Arcade"]
     },
     {
         id: "JUEGO-10",
+        codigo: "ETFR01",
         nombre: "Enter The FrontRooms",
         descripcion: "Explora habitaciones infinitas y sobrevive a entidades desconocidas.",
         precio: 7990,
+        stock: 6,
+        stockCritico: 3,
+        categoria: "Horror",
         imagen: "Assets/juegos/enterthefrontrooms.png",
         etiquetas: ["Terror", "Misterio"]
     },
     {
         id: "JUEGO-11",
+        codigo: "HDEAD3",
         nombre: "Half Dead 3",
         descripcion: "Sobrevive a salas trampa en un complejo subterráneo.",
         precio: 9990,
+        stock: 9,
+        stockCritico: 2,
+        categoria: "Acción",
         imagen: "Assets/juegos/halfdead3.png",
         etiquetas: ["Acción", "Supervivencia"]
     },
     {
         id: "JUEGO-12",
+        codigo: "AOK200",
         nombre: "Age of Kingdom 2",
         descripcion: "Estrategia en tiempo real con batallas de castillos medievales.",
         precio: 14990,
+        stock: 22,
+        stockCritico: 5,
+        categoria: "Estrategia",
         imagen: "Assets/juegos/ageofkingdom2.png",
         etiquetas: ["Estrategia"]
     }
@@ -152,7 +200,7 @@ const usuariosPorDefecto = [
 // Cargar datos por defecto al LocalStorage si no existen
 function cargarDatosIniciales() {
     let guardados = localStorage.getItem("lista_juegos");
-    if (!guardados || !guardados.includes("Age of Kingdom 2")) {
+    if (!guardados || !guardados.includes("CP2099")) {
         localStorage.setItem("lista_juegos", JSON.stringify(juegosPorDefecto));
     }
     if (!localStorage.getItem("lista_usuarios")) {

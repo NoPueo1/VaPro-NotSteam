@@ -20,6 +20,7 @@
             </div> 
             <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0"> 
                 <li><a href="Index.html" class="nav-link px-2 text-light">Pagina Principal</a></li> 
+                <li><a href="Index.html#galeria-juegos" class="nav-link px-2 text-light">Productos</a></li> 
                 <li><a href="Nosotros.html" class="nav-link px-2 text-light">Sobre Nosotros</a></li> 
                 <li><a href="Blog.html" class="nav-link px-2 text-light">Blog</a></li> 
                 <li><a href="Contacto.html" class="nav-link px-2 text-light">Contacto</a></li> 
@@ -96,9 +97,11 @@
                   <thead>
                     <tr>
                       <th style="width: 60px;">Foto</th>
+                      <th>Código</th>
                       <th>Nombre</th>
-                      <th>Descripción</th>
+                      <th>Categoría</th>
                       <th>Precio ($ CLP)</th>
+                      <th>Stock</th>
                       <th class="text-end" style="width: 170px;">Acciones</th>
                     </tr>
                   </thead>
@@ -116,7 +119,7 @@
 
     <!-- Modal Juego -->
     <div class="modal fade" id="modalJuego" tabindex="-1" aria-labelledby="modalJuegoTitulo" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content modal-admin">
           <div class="modal-header card-header-morado">
             <h5 class="modal-title text-white" id="modalJuegoTitulo">Nuevo Juego</h5>
@@ -127,58 +130,121 @@
             <div class="modal-body p-4">
               <input type="hidden" id="juego-id">
 
-              <!-- Imagen -->
-              <div class="mb-3">
-                <label for="juego-file" class="form-label text-light fw-bold">Cargar Imagen: <small class="text-white-50 fw-normal">(Opcional)</small></label>
-                <input type="file" class="form-control bg-dark text-white border-secondary" id="juego-file" accept="image/*">
-                
-                <input type="text" class="form-control form-control-sm mt-2 bg-dark text-white border-secondary" id="juego-url" placeholder="O pega el link de la imagen">
-                <div class="form-text text-white-50">Si no cargas imagen, se asignará una por defecto.</div>
-
-                <div class="text-center mt-2">
-                  <img id="juego-preview" src="" alt="Vista previa" class="foto-preview d-none">
+              <div class="row g-3">
+                <!-- Codigo -->
+                <div class="col-12 col-md-6">
+                  <label for="juego-codigo" class="form-label text-light fw-bold">Código del Producto:</label>
+                  <input 
+                    type="text" 
+                    class="form-control bg-dark text-white border-secondary" 
+                    id="juego-codigo" 
+                    placeholder="Ej: CP2099" 
+                    minlength="3" 
+                    required
+                  >
+                  <div class="invalid-feedback"></div>
+                  <small class="form-text text-white-50">Mínimo 3 caracteres.</small>
                 </div>
-              </div>
 
-              <!-- Nombre -->
-              <div class="mb-3">
-                <label for="juego-nombre" class="form-label text-light fw-bold">Nombre del Juego:</label>
-                <input 
-                  type="text" 
-                  class="form-control bg-dark text-white border-secondary" 
-                  id="juego-nombre" 
-                  placeholder="Ej: Cyberpunk 2099" 
-                  maxlength="100" 
-                  required
-                >
-                <div class="invalid-feedback"></div>
-              </div>
+                <!-- Categoria -->
+                <div class="col-12 col-md-6">
+                  <label for="juego-categoria" class="form-label text-light fw-bold">Categoría:</label>
+                  <select class="form-select bg-dark text-white border-secondary" id="juego-categoria" required>
+                    <option value="" class="bg-dark">Selecciona una categoría...</option>
+                    <option value="Acción" class="bg-dark">Acción</option>
+                    <option value="Aventura" class="bg-dark">Aventura</option>
+                    <option value="Carreras" class="bg-dark">Carreras</option>
+                    <option value="Casual" class="bg-dark">Casual</option>
+                    <option value="Deportes" class="bg-dark">Deportes</option>
+                    <option value="Estrategia" class="bg-dark">Estrategia</option>
+                    <option value="Horror" class="bg-dark">Horror</option>
+                    <option value="Lucha" class="bg-dark">Lucha</option>
+                  </select>
+                  <div class="invalid-feedback"></div>
+                </div>
 
-              <!-- Descripcion -->
-              <div class="mb-3">
-                <label for="juego-descripcion" class="form-label text-light fw-bold">Breve Descripción:</label>
-                <textarea 
-                  class="form-control bg-dark text-white border-secondary" 
-                  id="juego-descripcion" 
-                  rows="3" 
-                  maxlength="500" 
-                  placeholder="Breve reseña del juego..."
-                ></textarea>
-                <div class="invalid-feedback"></div>
-              </div>
+                <!-- Nombre -->
+                <div class="col-12">
+                  <label for="juego-nombre" class="form-label text-light fw-bold">Nombre del Juego:</label>
+                  <input 
+                    type="text" 
+                    class="form-control bg-dark text-white border-secondary" 
+                    id="juego-nombre" 
+                    placeholder="Ej: Cyberpunk 2099" 
+                    maxlength="100" 
+                    required
+                  >
+                  <div class="invalid-feedback"></div>
+                </div>
 
-              <!-- Precio -->
-              <div class="mb-3">
-                <label for="juego-precio" class="form-label text-light fw-bold">Precio ($ CLP):</label>
-                <input 
-                  type="number" 
-                  class="form-control bg-dark text-white border-secondary" 
-                  id="juego-precio" 
-                  placeholder="19990" 
-                  min="0" 
-                  required
-                >
-                <div class="invalid-feedback"></div>
+                <!-- Descripcion -->
+                <div class="col-12">
+                  <label for="juego-descripcion" class="form-label text-light fw-bold">Breve Descripción: <small class="text-white-50 fw-normal">(Opcional)</small></label>
+                  <textarea 
+                    class="form-control bg-dark text-white border-secondary" 
+                    id="juego-descripcion" 
+                    rows="3" 
+                    maxlength="500" 
+                    placeholder="Breve reseña del juego..."
+                  ></textarea>
+                  <div class="invalid-feedback"></div>
+                </div>
+
+                <!-- Precio -->
+                <div class="col-12 col-md-4">
+                  <label for="juego-precio" class="form-label text-light fw-bold">Precio ($ CLP):</label>
+                  <input 
+                    type="number" 
+                    class="form-control bg-dark text-white border-secondary" 
+                    id="juego-precio" 
+                    placeholder="19990" 
+                    min="0" 
+                    required
+                  >
+                  <div class="invalid-feedback"></div>
+                </div>
+
+                <!-- Stock -->
+                <div class="col-12 col-md-4">
+                  <label for="juego-stock" class="form-label text-light fw-bold">Stock:</label>
+                  <input 
+                    type="number" 
+                    class="form-control bg-dark text-white border-secondary" 
+                    id="juego-stock" 
+                    placeholder="10" 
+                    min="0" 
+                    step="1"
+                    required
+                  >
+                  <div class="invalid-feedback"></div>
+                </div>
+
+                <!-- Stock Critico -->
+                <div class="col-12 col-md-4">
+                  <label for="juego-stock-critico" class="form-label text-light fw-bold">Stock Crítico: <small class="text-white-50 fw-normal">(Opcional)</small></label>
+                  <input 
+                    type="number" 
+                    class="form-control bg-dark text-white border-secondary" 
+                    id="juego-stock-critico" 
+                    placeholder="3" 
+                    min="0" 
+                    step="1"
+                  >
+                  <div class="invalid-feedback"></div>
+                </div>
+
+                <!-- Imagen -->
+                <div class="col-12">
+                  <label for="juego-file" class="form-label text-light fw-bold">Cargar Imagen: <small class="text-white-50 fw-normal">(Opcional)</small></label>
+                  <input type="file" class="form-control bg-dark text-white border-secondary" id="juego-file" accept="image/*">
+                  
+                  <input type="text" class="form-control form-control-sm mt-2 bg-dark text-white border-secondary" id="juego-url" placeholder="O pega el link de la imagen">
+                  <div class="form-text text-white-50">Si no cargas imagen, se asignará una por defecto.</div>
+
+                  <div class="text-center mt-2">
+                    <img id="juego-preview" src="" alt="Vista previa" class="foto-preview d-none">
+                  </div>
+                </div>
               </div>
             </div>
 
