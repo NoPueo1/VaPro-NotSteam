@@ -1,13 +1,11 @@
-// admin.js - Logica de los mantenedores de juegos y usuarios
+// admin.js - Logica del panel de administracion para juegos y usuarios
 
-// Proteger vistas de administracion
-(function verificarAccesoAdmin() {
-    let u = (typeof getCurrentUser === "function") ? getCurrentUser() : null;
-    if (!u || u.rol !== "Administrador") {
-        alert("Debes iniciar sesión como Administrador.");
-        window.location.href = "Login.html";
-    }
-})();
+// Proteger vistas del panel: solo acceso para Administrador
+let usuarioSesion = (typeof getCurrentUser === "function") ? getCurrentUser() : null;
+if (!usuarioSesion || usuarioSesion.rol !== "Administrador") {
+    alert("Debes iniciar sesión como Administrador.");
+    window.location.href = "Login.html";
+}
 
 document.addEventListener("DOMContentLoaded", () => {
     if (document.getElementById("tabla-juegos-body") || document.getElementById("vista-juegos")) {
@@ -18,18 +16,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-// Mantenedor de juegos
+// Mantenedor de Juegos
 let imagenActualBase64 = "";
 
 function iniciarMantenedorJuegos() {
     dibujarTablaJuegos();
 
-    // Buscador
+    // Buscador por nombre
     let buscar = document.getElementById("buscar-juego");
     if (buscar) {
         buscar.addEventListener("keyup", () => {
             let texto = buscar.value.toLowerCase().trim();
-            let filtrados = getJuegos().filter(j => 
+            let lista = getJuegos();
+            let filtrados = lista.filter(j => 
                 j.nombre.toLowerCase().includes(texto) || 
                 (j.descripcion && j.descripcion.toLowerCase().includes(texto))
             );
@@ -37,7 +36,7 @@ function iniciarMantenedorJuegos() {
         });
     }
 
-    // Vista previa de imagen desde el PC o por URL
+    // Cargar imagen desde archivo o link
     let inputFile = document.getElementById("juego-file");
     let inputUrl = document.getElementById("juego-url");
     let previewImg = document.getElementById("juego-preview");
@@ -96,31 +95,39 @@ function dibujarTablaJuegos(lista = null) {
         return;
     }
 
-    tbody.innerHTML = juegos.map(j => `
-        <tr>
-            <td style="width: 60px;">
-                <img src="${j.imagen}" alt="${j.nombre}" class="foto-juego-thumb" onerror="this.src='Assets/logo.png'">
-            </td>
-            <td>
-                <strong class="text-white">${j.nombre}</strong><br>
-                <small class="text-white-50">${j.id}</small>
-            </td>
-            <td>
-                <span class="text-light">${j.descripcion || "Sin descripción"}</span>
-            </td>
-            <td>
-                <span class="text-warning fw-bold">${formatoPesos(j.precio)}</span>
-            </td>
-            <td class="text-end">
-                <button class="btn btn-sm btn-outline-info me-1" onclick="abrirModalEditarJuego('${j.id}')">
-                    Editar
-                </button>
-                <button class="btn btn-sm btn-outline-danger" onclick="eliminarJuego('${j.id}')">
-                    Eliminar
-                </button>
-            </td>
-        </tr>
-    `).join("");
+    let filas = "";
+    for (let i = 0; i < juegos.length; i++) {
+        let j = juegos[i];
+        let precioFmt = (typeof formatoPesos === "function") ? formatoPesos(j.precio) : "$" + j.precio;
+        let desc = j.descripcion || "Sin descripción";
+
+        filas += `
+            <tr>
+                <td style="width: 60px;">
+                    <img src="${j.imagen}" alt="${j.nombre}" class="foto-juego-thumb" onerror="this.src='Assets/logo.png'">
+                </td>
+                <td>
+                    <strong class="text-white">${j.nombre}</strong><br>
+                    <small class="text-white-50">${j.id}</small>
+                </td>
+                <td>
+                    <span class="text-light">${desc}</span>
+                </td>
+                <td>
+                    <span class="text-warning fw-bold">${precioFmt}</span>
+                </td>
+                <td class="text-end">
+                    <button class="btn btn-sm btn-outline-info me-1" onclick="abrirModalEditarJuego('${j.id}')">
+                        Editar
+                    </button>
+                    <button class="btn btn-sm btn-outline-danger" onclick="eliminarJuego('${j.id}')">
+                        Eliminar
+                    </button>
+                </td>
+            </tr>
+        `;
+    }
+    tbody.innerHTML = filas;
 }
 
 function abrirModalNuevoJuego() {
@@ -136,9 +143,6 @@ function abrirModalNuevoJuego() {
         preview.src = "";
         preview.classList.add("d-none");
     }
-
-    let errorImg = document.getElementById("error-imagen");
-    if (errorImg) errorImg.classList.add("d-none");
 
     document.querySelectorAll("#form-juego .form-control").forEach(el => {
         el.classList.remove("is-valid", "is-invalid");
@@ -179,7 +183,6 @@ function guardarJuego() {
     let descInput = document.getElementById("juego-descripcion");
     let precioInput = document.getElementById("juego-precio");
 
-    // Validaciones
     let vNombre = validarTexto(nombreInput.value, "Nombre del juego", 100, true);
     marcarCampo(nombreInput, vNombre);
 
@@ -189,12 +192,9 @@ function guardarJuego() {
     let vPrecio = validarPrecio(precioInput.value);
     marcarCampo(precioInput, vPrecio);
 
-    // Imagen: si no subio ni pego link, se asigna el logo por defecto
-    let errorImg = document.getElementById("error-imagen");
     if (!imagenActualBase64) {
         imagenActualBase64 = "Assets/logo.png";
     }
-    if (errorImg) errorImg.classList.add("d-none");
 
     if (!vNombre.valido || !vDesc.valido || !vPrecio.valido) {
         return;
@@ -228,7 +228,7 @@ function eliminarJuego(id) {
     }
 }
 
-// Mantenedor de usuarios
+// Mantenedor de Usuarios
 function iniciarMantenedorUsuarios() {
     dibujarTablaUsuarios();
     cargarSelectRegiones();
@@ -237,7 +237,8 @@ function iniciarMantenedorUsuarios() {
     if (buscar) {
         buscar.addEventListener("keyup", () => {
             let texto = buscar.value.toLowerCase().trim();
-            let filtrados = getUsuarios().filter(u => 
+            let lista = getUsuarios();
+            let filtrados = lista.filter(u => 
                 u.run.toLowerCase().includes(texto) || 
                 u.nombre.toLowerCase().includes(texto) ||
                 u.apellidos.toLowerCase().includes(texto) ||
@@ -247,7 +248,6 @@ function iniciarMantenedorUsuarios() {
         });
     }
 
-    // Al cambiar la region, cambiar las comunas
     let regionSelect = document.getElementById("usuario-region");
     if (regionSelect) {
         regionSelect.addEventListener("change", (e) => {
@@ -268,8 +268,12 @@ function cargarSelectRegiones() {
     let sel = document.getElementById("usuario-region");
     if (!sel || typeof REGIONES_CHILE === "undefined") return;
 
-    sel.innerHTML = `<option value="">Selecciona una región...</option>` +
-        REGIONES_CHILE.map(r => `<option value="${r.id}">${r.nombre}</option>`).join("");
+    let opciones = `<option value="">Selecciona una región...</option>`;
+    for (let i = 0; i < REGIONES_CHILE.length; i++) {
+        let r = REGIONES_CHILE[i];
+        opciones += `<option value="${r.id}">${r.nombre}</option>`;
+    }
+    sel.innerHTML = opciones;
 }
 
 function cargarSelectComunas(regionId, comunaSeleccionada = "") {
@@ -286,8 +290,13 @@ function cargarSelectComunas(regionId, comunaSeleccionada = "") {
     if (!region) return;
 
     sel.disabled = false;
-    sel.innerHTML = `<option value="">Selecciona una comuna...</option>` +
-        region.comunas.map(c => `<option value="${c}" ${c === comunaSeleccionada ? 'selected' : ''}>${c}</option>`).join("");
+    let opciones = `<option value="">Selecciona una comuna...</option>`;
+    for (let i = 0; i < region.comunas.length; i++) {
+        let c = region.comunas[i];
+        let selAttr = (c === comunaSeleccionada) ? "selected" : "";
+        opciones += `<option value="${c}" ${selAttr}>${c}</option>`;
+    }
+    sel.innerHTML = opciones;
 }
 
 function dibujarTablaUsuarios(lista = null) {
@@ -303,30 +312,37 @@ function dibujarTablaUsuarios(lista = null) {
         return;
     }
 
-    tbody.innerHTML = usuarios.map(u => `
-        <tr>
-            <td><code class="text-warning bg-black bg-opacity-50 px-2 py-1 rounded">${u.run}</code></td>
-            <td>
-                <strong class="text-white">${u.nombre} ${u.apellidos}</strong><br>
-                <small class="text-white-50">${u.direccion || ""}</small>
-            </td>
-            <td class="text-light">${u.correo}</td>
-            <td>
-                <span class="badge ${u.rol === 'Administrador' ? 'bg-danger' : (u.rol === 'Vendedor' ? 'bg-warning text-dark' : 'bg-primary')}">
-                    ${u.rol}
-                </span>
-            </td>
-            <td class="text-light">${u.comuna || "N/A"}</td>
-            <td class="text-end">
-                <button class="btn btn-sm btn-outline-info me-1" onclick="abrirModalEditarUsuario('${u.run}')">
-                    Editar
-                </button>
-                <button class="btn btn-sm btn-outline-danger" onclick="eliminarUsuario('${u.run}')">
-                    Eliminar
-                </button>
-            </td>
-        </tr>
-    `).join("");
+    let filas = "";
+    for (let i = 0; i < usuarios.length; i++) {
+        let u = usuarios[i];
+        let rolBadge = "bg-primary";
+        if (u.rol === "Administrador") rolBadge = "bg-danger";
+        else if (u.rol === "Vendedor") rolBadge = "bg-warning text-dark";
+
+        filas += `
+            <tr>
+                <td><code class="text-warning bg-black bg-opacity-50 px-2 py-1 rounded">${u.run}</code></td>
+                <td>
+                    <strong class="text-white">${u.nombre} ${u.apellidos}</strong><br>
+                    <small class="text-white-50">${u.direccion || ""}</small>
+                </td>
+                <td class="text-light">${u.correo}</td>
+                <td>
+                    <span class="badge ${rolBadge}">${u.rol}</span>
+                </td>
+                <td class="text-light">${u.comuna || "N/A"}</td>
+                <td class="text-end">
+                    <button class="btn btn-sm btn-outline-info me-1" onclick="abrirModalEditarUsuario('${u.run}')">
+                        Editar
+                    </button>
+                    <button class="btn btn-sm btn-outline-danger" onclick="eliminarUsuario('${u.run}')">
+                        Eliminar
+                    </button>
+                </td>
+            </tr>
+        `;
+    }
+    tbody.innerHTML = filas;
 }
 
 function abrirModalNuevoUsuario() {

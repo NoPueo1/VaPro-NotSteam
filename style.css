@@ -1,16 +1,16 @@
-/* style.css - Estilos clásicos para la tienda Vapro */
+/* style.css - Estilos clasicos para la tienda Vapro (estetica 2010 con morado oscuro) */
 
 :root {
-    --bg-oscuro: #110f17;
-    --bg-panel: #1a1624;
-    --bg-header: #161320;
-    --bg-footer: #110f16;
-    --borde-morado: #322645;
-    --morado-btn: #3e1d64;
-    --morado-btn-hover: #4d237d;
-    --morado-btn-borde: #56288c;
+    --bg-oscuro: #180f26;
+    --bg-panel: #241639;
+    --bg-header: #140c21;
+    --bg-footer: #120a1c;
+    --borde-morado: #432b66;
+    --morado-btn: #542285;
+    --morado-btn-hover: #662a9f;
+    --morado-btn-borde: #7a33bd;
     --texto-principal: #ffffff;
-    --texto-secundario: #b3acc4;
+    --texto-secundario: #c5bcd6;
 }
 
 body {
@@ -60,19 +60,19 @@ footer .nav-link:hover {
 }
 
 .game-card:hover {
-    border-color: #63369c !important;
+    border-color: #8c45d6 !important;
 }
 
-/* Panel Administrador */
+/* Panel Administrador y tarjetas de contenido */
 .card-admin {
     background-color: var(--bg-panel) !important;
     border: 1px solid var(--borde-morado) !important;
-    border-radius: 6px;
+    border-radius: 4px;
     color: #ffffff;
 }
 
 .card-header-morado {
-    background-color: #271d38 !important;
+    background-color: #2d1c47 !important;
     color: #ffffff;
     font-weight: bold;
     border-bottom: 1px solid var(--borde-morado);
@@ -80,8 +80,8 @@ footer .nav-link:hover {
 
 /* Menu lateral admin */
 .list-group-admin .list-group-item {
-    background-color: #171421;
-    border-color: #2b233a;
+    background-color: #1e1230;
+    border-color: #382455;
     color: var(--texto-secundario);
 }
 
@@ -93,7 +93,7 @@ footer .nav-link:hover {
 }
 
 .list-group-admin .list-group-item:hover:not(.active) {
-    background-color: #231c33;
+    background-color: #291942;
     color: #ffffff;
 }
 
@@ -112,64 +112,64 @@ footer .nav-link:hover {
 .btn-morado:active,
 .btn-morado:focus {
     background-color: var(--morado-btn-hover);
-    border-color: #8441c9;
+    border-color: #984ee6;
     color: #ffffff;
 }
 
-/* Tablas oscuras del panel */
+/* Tablas del panel */
 .table-admin {
-    --bs-table-color: #f1f5f9;
+    --bs-table-color: #ffffff;
     --bs-table-bg: transparent;
-    --bs-table-border-color: #2c243c;
+    --bs-table-border-color: #382455;
     --bs-table-striped-bg: rgba(255, 255, 255, 0.02);
-    --bs-table-striped-color: #f1f5f9;
-    --bs-table-hover-bg: #221c30;
+    --bs-table-striped-color: #ffffff;
+    --bs-table-hover-bg: #2d1c47;
     --bs-table-hover-color: #ffffff;
-    color: #f1f5f9 !important;
+    color: #ffffff !important;
 }
 
 .table-admin td,
 .table-admin th {
-    color: #f1f5f9 !important;
+    color: #ffffff !important;
     vertical-align: middle;
 }
 
 .table-admin .text-muted,
 .table-admin small {
-    color: #a29cb3 !important;
+    color: #b5a9cc !important;
 }
 
 .table-admin thead th {
-    background-color: #241c33;
+    background-color: #2d1c47;
     color: #ffffff !important;
-    border-bottom: 2px solid #43315c;
+    border-bottom: 2px solid var(--borde-morado);
 }
 
-/* Modales oscuros */
+/* Modales */
 .modal-admin {
-    background-color: #181523;
-    border: 1px solid #3d2f57;
-    border-radius: 6px;
+    background-color: #201333;
+    border: 1px solid var(--borde-morado);
+    border-radius: 4px;
     color: #ffffff;
 }
 
 .modal-admin .form-control,
 .modal-admin .form-select {
-    background-color: #100e18;
-    border-color: #2e263f;
+    background-color: #160d24;
+    border-color: #3e275f;
     color: #ffffff;
 }
 
 .modal-admin .form-control:focus,
 .modal-admin .form-select:focus {
-    background-color: #141120;
+    background-color: #1a102b;
     border-color: var(--morado-btn-borde);
     color: #ffffff;
     box-shadow: none;
 }
 
 .modal-admin .form-control::placeholder {
-    color: #7b748c;
+    color: #8878a3;
 }
 
 /* Miniaturas de juegos */
@@ -177,17 +177,17 @@ footer .nav-link:hover {
     width: 50px;
     height: 40px;
     object-fit: cover;
-    border: 1px solid #3d2f57;
-    border-radius: 4px;
+    border: 1px solid var(--borde-morado);
+    border-radius: 3px;
 }
 
 .foto-preview {
     max-width: 140px;
     max-height: 140px;
-    border: 1px solid #3d2f57;
+    border: 1px solid var(--borde-morado);
     padding: 3px;
-    background-color: #100e18;
-    border-radius: 4px;
+    background-color: #160d24;
+    border-radius: 3px;
 }
 
 /* Galeria de juegos estilo Steam */
@@ -197,7 +197,7 @@ footer .nav-link:hover {
     object-fit: cover;
     object-position: center;
     display: block;
-    border-radius: 6px;
+    border-radius: 4px;
 }
 
 .miniatura-galeria {
@@ -206,11 +206,11 @@ footer .nav-link:hover {
     aspect-ratio: 16 / 9;
     object-fit: cover;
     cursor: pointer;
-    border-radius: 4px;
-    border: 1px solid #3d2f57;
+    border-radius: 3px;
+    border: 1px solid var(--borde-morado);
     transition: border-color 0.15s ease;
 }
 
 .miniatura-galeria:hover {
-    border-color: #8441c9;
+    border-color: #8c45d6;
 }

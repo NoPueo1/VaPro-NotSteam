@@ -1,6 +1,6 @@
-// storage.js - Manejo del LocalStorage para juegos y usuarios
+// storage.js - Manejo del LocalStorage para juegos, usuarios y carrito
 
-// Juegos iniciales
+// 1. Datos iniciales de Juegos
 const juegosPorDefecto = [
     {
         id: "JUEGO-1",
@@ -114,7 +114,7 @@ const juegosPorDefecto = [
     }
 ];
 
-// Datos iniciales de usuarios de prueba
+// 2. Datos iniciales de Usuarios de prueba
 const usuariosPorDefecto = [
     {
         run: "111111111",
@@ -151,7 +151,7 @@ const usuariosPorDefecto = [
     }
 ];
 
-// Cargar datos al storage si es primera vez
+// Cargar datos por defecto al LocalStorage si no existen
 function cargarDatosIniciales() {
     let guardados = localStorage.getItem("lista_juegos");
     if (!guardados || !guardados.includes("Age of Kingdom 2")) {
@@ -179,7 +179,7 @@ function saveJuego(juego) {
         }
     } else {
         juego.id = "JUEGO-" + (juegos.length + 1);
-        juegos.unshift(juego);
+        juegos.push(juego);
     }
     localStorage.setItem("lista_juegos", JSON.stringify(juegos));
     return juego;
@@ -187,13 +187,23 @@ function saveJuego(juego) {
 
 function deleteJuego(id) {
     let juegos = getJuegos();
-    juegos = juegos.filter(j => j.id !== id);
-    localStorage.setItem("lista_juegos", JSON.stringify(juegos));
+    let filtrados = [];
+    for (let i = 0; i < juegos.length; i++) {
+        if (juegos[i].id !== id) {
+            filtrados.push(juegos[i]);
+        }
+    }
+    localStorage.setItem("lista_juegos", JSON.stringify(filtrados));
 }
 
 function getJuegoById(id) {
     let juegos = getJuegos();
-    return juegos.find(j => j.id === id) || null;
+    for (let i = 0; i < juegos.length; i++) {
+        if (juegos[i].id === id) {
+            return juegos[i];
+        }
+    }
+    return null;
 }
 
 // Funciones para Usuarios
@@ -207,15 +217,15 @@ function saveUsuario(usuario) {
     let usuarios = getUsuarios();
     let runLimpio = usuario.run ? usuario.run.replace(/[^0-9kK]/g, '').toUpperCase() : "";
     if (!runLimpio) {
-        runLimpio = "CLI" + Date.now().toString().slice(-6);
+        runLimpio = "CLI-" + (usuarios.length + 1);
     }
     usuario.run = runLimpio;
-    
+
     let pos = usuarios.findIndex(u => u.run === runLimpio || (u.correo && usuario.correo && u.correo.toLowerCase() === usuario.correo.toLowerCase()));
     if (pos !== -1) {
         usuarios[pos] = usuario;
     } else {
-        usuarios.unshift(usuario);
+        usuarios.push(usuario);
     }
     localStorage.setItem("lista_usuarios", JSON.stringify(usuarios));
     return usuario;
@@ -224,17 +234,27 @@ function saveUsuario(usuario) {
 function deleteUsuario(run) {
     let usuarios = getUsuarios();
     let runLimpio = run.replace(/[^0-9kK]/g, '').toUpperCase();
-    usuarios = usuarios.filter(u => u.run !== runLimpio);
-    localStorage.setItem("lista_usuarios", JSON.stringify(usuarios));
+    let filtrados = [];
+    for (let i = 0; i < usuarios.length; i++) {
+        if (usuarios[i].run !== runLimpio) {
+            filtrados.push(usuarios[i]);
+        }
+    }
+    localStorage.setItem("lista_usuarios", JSON.stringify(filtrados));
 }
 
 function getUsuarioByRun(run) {
     let usuarios = getUsuarios();
     let runLimpio = run.replace(/[^0-9kK]/g, '').toUpperCase();
-    return usuarios.find(u => u.run === runLimpio) || null;
+    for (let i = 0; i < usuarios.length; i++) {
+        if (usuarios[i].run === runLimpio) {
+            return usuarios[i];
+        }
+    }
+    return null;
 }
 
-// Sesion de usuario actual
+// Sesion de usuario actual (SessionStorage)
 function getCurrentUser() {
     let u = sessionStorage.getItem("usuario_logeado");
     return u ? JSON.parse(u) : null;
@@ -284,8 +304,13 @@ function agregarAlCarrito(idJuego, cantidad = 1) {
 
 function eliminarDelCarrito(idJuego) {
     let carrito = getCarrito();
-    carrito = carrito.filter(item => item.id !== idJuego);
-    guardarCarrito(carrito);
+    let filtrados = [];
+    for (let i = 0; i < carrito.length; i++) {
+        if (carrito[i].id !== idJuego) {
+            filtrados.push(carrito[i]);
+        }
+    }
+    guardarCarrito(filtrados);
 }
 
 function cambiarCantidadCarrito(idJuego, nuevaCantidad) {
@@ -306,14 +331,13 @@ function vaciarCarrito() {
     actualizarBadgeCarrito();
 }
 
-function totalCarrito() {
-    let carrito = getCarrito();
-    return carrito.reduce((acc, item) => acc + (item.precio * item.cantidad), 0);
-}
-
 function cantidadTotalCarrito() {
     let carrito = getCarrito();
-    return carrito.reduce((acc, item) => acc + item.cantidad, 0);
+    let total = 0;
+    for (let i = 0; i < carrito.length; i++) {
+        total += carrito[i].cantidad;
+    }
+    return total;
 }
 
 function actualizarBadgeCarrito() {
@@ -367,4 +391,3 @@ document.addEventListener("DOMContentLoaded", () => {
     actualizarBadgeCarrito();
     actualizarHeaderUsuario();
 });
-
