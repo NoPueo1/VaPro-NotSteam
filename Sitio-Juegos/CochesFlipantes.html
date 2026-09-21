@@ -48,6 +48,7 @@
                 </div>
                 <div class="d-flex gap-2">
                     <img src="../Assets/juegos/cochesflipantes.png" alt="Portada" class="img-thumbnail bg-dark border-primary miniatura-galeria" style="width: 130px; height: 75px; object-fit: cover; cursor: pointer;" onclick="cambiarImagen(this.src)">
+                    <img src="../Assets/juegos/galeria/cochesflipantes-gameplay.jpg" alt="Captura de juego" class="img-thumbnail bg-dark border-secondary miniatura-galeria" style="width: 130px; height: 75px; object-fit: cover; cursor: pointer;" onclick="cambiarImagen(this.src)">
                 </div>
                 <small class="text-white-50 d-block mt-2">Haz clic en una miniatura para cambiar la vista previa.</small>
             </div>
@@ -154,6 +155,15 @@
     <script>
       function cambiarImagen(src) {
           document.getElementById("imagen-principal").src = src;
+          document.querySelectorAll(".miniatura-galeria").forEach(img => {
+              if (img.src === src) {
+                  img.classList.remove("border-secondary");
+                  img.classList.add("border-primary");
+              } else {
+                  img.classList.remove("border-primary");
+                  img.classList.add("border-secondary");
+              }
+          });
       }
 
       document.getElementById("btn-comprar").addEventListener("click", () => {
