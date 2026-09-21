@@ -108,7 +108,8 @@ const juegosPorDefecto = [
         stockCritico: 5,
         categoria: "Acción",
         imagen: "Assets/juegos/left4live2.png",
-        etiquetas: ["Acción", "Cooperativo"]
+        etiquetas: ["Acción", "Cooperativo"],
+        enlace: "Sitio-Juegos/Left4Live2.html"
     },
     {
         id: "JUEGO-9",
@@ -120,7 +121,8 @@ const juegosPorDefecto = [
         stockCritico: 4,
         categoria: "Carreras",
         imagen: "Assets/juegos/cochesflipantes.png",
-        etiquetas: ["Carreras", "Arcade"]
+        etiquetas: ["Carreras", "Arcade"],
+        enlace: "Sitio-Juegos/CochesFlipantes.html"
     },
     {
         id: "JUEGO-10",
@@ -132,7 +134,8 @@ const juegosPorDefecto = [
         stockCritico: 3,
         categoria: "Horror",
         imagen: "Assets/juegos/enterthefrontrooms.png",
-        etiquetas: ["Terror", "Misterio"]
+        etiquetas: ["Terror", "Misterio"],
+        enlace: "Sitio-Juegos/EnterTheFrontRooms.html"
     },
     {
         id: "JUEGO-11",
@@ -144,7 +147,8 @@ const juegosPorDefecto = [
         stockCritico: 2,
         categoria: "Acción",
         imagen: "Assets/juegos/halfdead3.png",
-        etiquetas: ["Acción", "Supervivencia"]
+        etiquetas: ["Acción", "Supervivencia"],
+        enlace: "Sitio-Juegos/HalfDead3.html"
     },
     {
         id: "JUEGO-12",
@@ -156,7 +160,8 @@ const juegosPorDefecto = [
         stockCritico: 5,
         categoria: "Estrategia",
         imagen: "Assets/juegos/ageofkingdom2.png",
-        etiquetas: ["Estrategia"]
+        etiquetas: ["Estrategia"],
+        enlace: "Sitio-Juegos/AgeOfKingdom2.html"
     }
 ];
 
@@ -200,7 +205,7 @@ const usuariosPorDefecto = [
 // Cargar datos por defecto al LocalStorage si no existen
 function cargarDatosIniciales() {
     let guardados = localStorage.getItem("lista_juegos");
-    if (!guardados || !guardados.includes("CP2099")) {
+    if (!guardados || !guardados.includes("Left4Live2.html")) {
         localStorage.setItem("lista_juegos", JSON.stringify(juegosPorDefecto));
     }
     if (!localStorage.getItem("lista_usuarios")) {
