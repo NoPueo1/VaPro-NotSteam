@@ -30,22 +30,22 @@ body {
 header {
     background: linear-gradient(to bottom, #24133a 0%, #130920 100%);
     border-bottom: 2px solid #3d205c;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
-    min-height: 96px;
-    padding-top: 24px !important;
-    padding-bottom: 24px !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+    min-height: 94px;
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
     display: flex;
     align-items: center;
 }
 
 header .nav-link {
     font-family: Tahoma, Verdana, sans-serif;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: bold;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.6px;
     color: #c4b8d7 !important;
-    padding: 8px 14px !important;
+    padding: 9px 15px !important;
     border: 1px solid transparent;
 }
 
@@ -56,16 +56,21 @@ header .nav-link.fw-bold {
     border: 1px solid #4a2775;
 }
 
+header .btn {
+    font-size: 14px;
+    padding: 7px 15px;
+}
+
 /* Logo y marca */
 .brand-logo-img {
-    height: 40px;
-    width: 40px;
+    height: 54px;
+    width: 54px;
     object-fit: contain;
     transition: transform 0.15s ease;
 }
 
 .brand-text-img {
-    height: 30px;
+    height: 42px;
     width: auto;
     object-fit: contain;
 }
