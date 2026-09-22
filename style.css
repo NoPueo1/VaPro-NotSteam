@@ -31,6 +31,11 @@ header {
     background: linear-gradient(to bottom, #24133a 0%, #130920 100%);
     border-bottom: 2px solid #3d205c;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
+    min-height: 96px;
+    padding-top: 24px !important;
+    padding-bottom: 24px !important;
+    display: flex;
+    align-items: center;
 }
 
 header .nav-link {
@@ -53,14 +58,14 @@ header .nav-link.fw-bold {
 
 /* Logo y marca */
 .brand-logo-img {
-    height: 64px;
-    width: 64px;
+    height: 40px;
+    width: 40px;
     object-fit: contain;
     transition: transform 0.15s ease;
 }
 
 .brand-text-img {
-    height: 48px;
+    height: 30px;
     width: auto;
     object-fit: contain;
 }
@@ -70,13 +75,13 @@ header .nav-link.fw-bold {
 }
 
 .footer-logo-img {
-    height: 56px;
-    width: 56px;
+    height: 46px;
+    width: 46px;
     object-fit: contain;
 }
 
 .footer-text-img {
-    height: 38px;
+    height: 32px;
     width: auto;
     object-fit: contain;
 }
