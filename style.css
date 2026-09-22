@@ -53,14 +53,14 @@ header .nav-link.fw-bold {
 
 /* Logo y marca */
 .brand-logo-img {
-    height: 58px;
-    width: 58px;
+    height: 64px;
+    width: 64px;
     object-fit: contain;
     transition: transform 0.15s ease;
 }
 
 .brand-text-img {
-    height: 42px;
+    height: 48px;
     width: auto;
     object-fit: contain;
 }
