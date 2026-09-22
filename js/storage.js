@@ -1,4 +1,3 @@
-// Juegos iniciales
 const juegosPorDefecto = [
     {
         id: "JUEGO-1",
@@ -170,7 +169,6 @@ const juegosPorDefecto = [
     }
 ];
 
-// Usuarios iniciales
 const usuariosPorDefecto = [
     {
         run: "111111111",
@@ -207,7 +205,6 @@ const usuariosPorDefecto = [
     }
 ];
 
-// Cargar datos por defecto al LocalStorage si no existen
 function cargarDatosIniciales() {
     let guardados = localStorage.getItem("lista_juegos");
     if (!guardados || !guardados.includes("Left4Live2.html")) {
@@ -219,7 +216,6 @@ function cargarDatosIniciales() {
 }
 cargarDatosIniciales();
 
-// Funciones para Juegos
 function getJuegos() {
     cargarDatosIniciales();
     let datos = localStorage.getItem("lista_juegos");
@@ -262,7 +258,6 @@ function getJuegoById(id) {
     return null;
 }
 
-// Funciones para Usuarios
 function getUsuarios() {
     cargarDatosIniciales();
     let datos = localStorage.getItem("lista_usuarios");
@@ -310,7 +305,6 @@ function getUsuarioByRun(run) {
     return null;
 }
 
-// Sesion de usuario actual (SessionStorage)
 function getCurrentUser() {
     let u = sessionStorage.getItem("usuario_logeado");
     return u ? JSON.parse(u) : null;
@@ -324,7 +318,6 @@ function logoutUser() {
     sessionStorage.removeItem("usuario_logeado");
 }
 
-// Manejo del Carrito de Compras
 function getCarrito() {
     let datos = localStorage.getItem("vapro_carrito");
     return datos ? JSON.parse(datos) : [];
@@ -409,7 +402,6 @@ function actualizarBadgeCarrito() {
     });
 }
 
-// Barra superior con estado del usuario
 function actualizarHeaderUsuario() {
     let contenedor = document.getElementById("header-user-area");
     if (!contenedor) return;

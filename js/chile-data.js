@@ -1,4 +1,3 @@
-// Datos oficiales de Regiones y Comunas de Chile para el mantenedor de usuarios
 const REGIONES_CHILE = [
     {
         id: "AP",

@@ -1,6 +1,3 @@
-// Logica del panel de administracion para juegos y usuarios
-
-// Proteger vistas del panel
 let usuarioSesion = (typeof getCurrentUser === "function") ? getCurrentUser() : null;
 if (!usuarioSesion || (usuarioSesion.rol !== "Administrador" && usuarioSesion.rol !== "Vendedor")) {
     alert("Debes iniciar sesión como Administrador.");
@@ -15,7 +12,7 @@ if (usuarioSesion && usuarioSesion.rol === "Vendedor") {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-    // Ocultar acceso a usuarios si el rol es Vendedor
+    
     if (usuarioSesion && usuarioSesion.rol === "Vendedor") {
         document.querySelectorAll("a[href='admin-usuarios.html']").forEach(function(el) {
             el.style.display = "none";
@@ -30,7 +27,6 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
-// --- MANTENEDOR DE JUEGOS ---
 function iniciarMantenedorJuegos() {
     dibujarTablaJuegos();
 
@@ -187,7 +183,6 @@ function eliminarJuego(id) {
     }
 }
 
-// --- MANTENEDOR DE USUARIOS ---
 function iniciarMantenedorUsuarios() {
     dibujarTablaUsuarios();
     cargarSelectRegiones();

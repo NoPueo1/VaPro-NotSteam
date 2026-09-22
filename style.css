@@ -1,5 +1,3 @@
-/* Estilos Tienda Vapro */
-
 body {
     background-color: #0f0a17;
     background: radial-gradient(circle at 50% 0%, #1e1030 0%, #0d0714 85%);
@@ -12,7 +10,6 @@ body {
     flex-direction: column;
 }
 
-/* Bordes y esquinas */
 .rounded,
 .rounded-1,
 .rounded-2,
@@ -26,7 +23,6 @@ body {
     border-radius: 3px !important;
 }
 
-/* Cabecera y navegacion */
 header {
     background: linear-gradient(to bottom, #24133a 0%, #130920 100%);
     border-bottom: 2px solid #3d205c;
@@ -61,7 +57,6 @@ header .btn {
     padding: 7px 15px;
 }
 
-/* Logo y marca */
 .brand-logo-img {
     height: 54px;
     width: 54px;
@@ -91,7 +86,6 @@ header .btn {
     object-fit: contain;
 }
 
-/* Pie de pagina */
 footer {
     background: linear-gradient(to bottom, #140920 0%, #0a0410 100%);
     border-top: 2px solid #381b54;
@@ -135,7 +129,6 @@ footer .nav-link:hover {
     color: #ffffff !important;
 }
 
-/* Tarjetas y paneles */
 .game-card,
 .card-admin {
     background: linear-gradient(to bottom, #1c112d 0%, #130a21 100%) !important;
@@ -149,7 +142,6 @@ footer .nav-link:hover {
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 3px 8px rgba(0, 0, 0, 0.8);
 }
 
-/* Cabeceras de tarjetas */
 .card-header-morado {
     background: linear-gradient(to bottom, #381a59 0%, #220e38 100%) !important;
     color: #ffffff;
@@ -161,7 +153,6 @@ footer .nav-link:hover {
     text-shadow: 1px 1px 1px #000;
 }
 
-/* Menú lateral vertical */
 .list-group-admin .list-group-item {
     background: linear-gradient(to bottom, #1c102c 0%, #130a20 100%);
     border-color: #331b4e;
@@ -183,7 +174,6 @@ footer .nav-link:hover {
     color: #ffffff;
 }
 
-/* Boton morado principal */
 .btn-morado {
     background: linear-gradient(to bottom, #6929a5 0%, #43176c 100%);
     border: 1px solid #2e0f4d;
@@ -209,7 +199,6 @@ footer .nav-link:hover {
     box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.7);
 }
 
-/* Botones secundarios */
 .btn-outline-light {
     background: linear-gradient(to bottom, #2b183f 0%, #190c28 100%);
     border: 1px solid #48286e;
@@ -226,7 +215,6 @@ footer .nav-link:hover {
     color: #ffffff;
 }
 
-/* Formularios e inputs */
 .form-control,
 .form-select,
 .modal-admin .form-control,
@@ -251,7 +239,6 @@ footer .nav-link:hover {
     color: #6c5c82;
 }
 
-/* Tablas del panel */
 .table-admin {
     border: 1px solid #381b54;
     font-size: 13px;
@@ -286,7 +273,6 @@ footer .nav-link:hover {
     color: #a395b8 !important;
 }
 
-/* Modales */
 .modal-admin {
     background: linear-gradient(to bottom, #1d122e 0%, #130a21 100%);
     border: 2px solid #4a2775;
@@ -297,7 +283,6 @@ footer .nav-link:hover {
     border-bottom: 1px solid #4a2775;
 }
 
-/* Badges y etiquetas */
 .badge {
     border-radius: 2px !important;
     font-size: 11px !important;
@@ -308,7 +293,6 @@ footer .nav-link:hover {
     text-transform: uppercase;
 }
 
-/* Miniaturas de juegos */
 .foto-juego-thumb {
     width: 50px;
     height: 40px;
@@ -325,7 +309,6 @@ footer .nav-link:hover {
     background-color: #0c0613;
 }
 
-/* Galeria de imagenes de juegos */
 .visor-galeria-img {
     width: 100%;
     aspect-ratio: 16 / 9;
@@ -346,7 +329,6 @@ footer .nav-link:hover {
     border-color: #6a2ca5;
 }
 
-/* Carrusel de inicio */
 .carousel-item img {
     height: 400px;
     object-fit: cover;

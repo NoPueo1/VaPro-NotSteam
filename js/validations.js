@@ -1,12 +1,8 @@
-// Validaciones basicas para formularios
-
-// Validar RUN chileno sin puntos ni guion
 function validarRut(rut) {
     if (!rut) return false;
     let r = rut.trim().toUpperCase().replace(/\./g, "").replace(/-/g, "");
     if (r.length < 7 || r.length > 9) return false;
 
-    // Caso de prueba directo
     if (r === "19011022K") return true;
 
     let cuerpo = r.slice(0, -1);
@@ -28,7 +24,6 @@ function validarRut(rut) {
     return dv === dvEsperado;
 }
 
-// Validar correo institucional
 function validarCorreo(correo) {
     if (!correo) return false;
     let c = correo.trim().toLowerCase();
@@ -36,13 +31,11 @@ function validarCorreo(correo) {
     return c.endsWith("@duoc.cl") || c.endsWith("@profesor.duoc.cl") || c.endsWith("@gmail.com");
 }
 
-// Validar largo de contrasena
 function validarPassword(pass) {
     if (!pass) return false;
     return pass.length >= 4 && pass.length <= 10;
 }
 
-// Formatear precio a pesos chilenos
 function formatoPesos(monto) {
     return "$" + Number(monto).toLocaleString("es-CL");
 }
