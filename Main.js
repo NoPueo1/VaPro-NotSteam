@@ -1,10 +1,12 @@
-// Main.js - Catalogo de juegos en la pagina principal
+// Cargar el catalogo de juegos en la pagina principal
 document.addEventListener("DOMContentLoaded", () => {
     const contenedor = document.getElementById('galeria-juegos');
     if (!contenedor) return;
 
+    // Obtener la lista de juegos desde localStorage
     let listaJuegos = (typeof getJuegos === "function") ? getJuegos() : [];
 
+    // Limpiar contenedor antes de renderizar
     contenedor.innerHTML = '';
     listaJuegos.forEach(juego => {
         let precioTexto = (typeof formatoPesos === "function") ? formatoPesos(juego.precio) : "$" + juego.precio;
