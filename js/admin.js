@@ -1,3 +1,4 @@
+// Control de acceso: verifica que el usuario logeado tenga permisos de administracion
 let usuarioSesion = (typeof getCurrentUser === "function") ? getCurrentUser() : null;
 if (!usuarioSesion || (usuarioSesion.rol !== "Administrador" && usuarioSesion.rol !== "Vendedor")) {
     alert("Debes iniciar sesión como Administrador.");
@@ -11,6 +12,7 @@ if (usuarioSesion && usuarioSesion.rol === "Vendedor") {
     }
 }
 
+// Inicializacion: arranca los mantenedores y eventos al cargar la pagina
 document.addEventListener("DOMContentLoaded", function() {
     
     if (usuarioSesion && usuarioSesion.rol === "Vendedor") {
@@ -27,6 +29,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
+// Mantenedor juegos: activa el buscador en tiempo real y el formulario de productos
 function iniciarMantenedorJuegos() {
     dibujarTablaJuegos();
 
@@ -51,6 +54,7 @@ function iniciarMantenedorJuegos() {
     }
 }
 
+// Tabla de juegos: dibuja las filas de productos con stock alertas y botones de edicion
 function dibujarTablaJuegos(lista) {
     let juegos = lista || getJuegos();
     let tbody = document.getElementById("tabla-juegos-body");
@@ -90,6 +94,7 @@ function dibujarTablaJuegos(lista) {
     tbody.innerHTML = filas;
 }
 
+// Formulario juego: limpia y abre la ventana modal para ingresar un juego nuevo
 function abrirModalNuevoJuego() {
     let form = document.getElementById("form-juego");
     if (form) form.reset();
@@ -100,6 +105,7 @@ function abrirModalNuevoJuego() {
     modal.show();
 }
 
+// Edicion de juego: carga los datos del juego seleccionado dentro de la ventana modal
 function abrirModalEditarJuego(id) {
     let juego = getJuegoById(id);
     if (!juego) return;
@@ -119,6 +125,7 @@ function abrirModalEditarJuego(id) {
     modal.show();
 }
 
+// Guardar juego: valida los campos obligatorios y persiste el producto en storage
 function guardarJuego() {
     let id = document.getElementById("juego-id").value;
     let codigo = document.getElementById("juego-codigo").value.trim().toUpperCase();
@@ -173,6 +180,7 @@ function guardarJuego() {
     alert("Juego guardado correctamente.");
 }
 
+// Eliminar juego: borra el producto seleccionado previa confirmacion del usuario
 function eliminarJuego(id) {
     let juego = getJuegoById(id);
     if (!juego) return;
@@ -183,6 +191,7 @@ function eliminarJuego(id) {
     }
 }
 
+// Mantenedor usuarios: configura el filtro de busqueda y el selector de regiones
 function iniciarMantenedorUsuarios() {
     dibujarTablaUsuarios();
     cargarSelectRegiones();
@@ -215,6 +224,7 @@ function iniciarMantenedorUsuarios() {
     }
 }
 
+// Select de regiones: carga las regiones de chile dentro del menu desplegable
 function cargarSelectRegiones() {
     let sel = document.getElementById("usuario-region");
     if (!sel || typeof REGIONES_CHILE === "undefined") return;
@@ -227,6 +237,7 @@ function cargarSelectRegiones() {
     sel.innerHTML = opciones;
 }
 
+// Select de comunas: actualiza las comunas disponibles segun la region seleccionada
 function cargarSelectComunas(regionId, comunaSeleccionada) {
     let sel = document.getElementById("usuario-comuna");
     if (!sel || typeof REGIONES_CHILE === "undefined") return;
@@ -250,6 +261,7 @@ function cargarSelectComunas(regionId, comunaSeleccionada) {
     sel.innerHTML = opciones;
 }
 
+// Tabla de usuarios: dibuja la lista de personas registradas con sus roles y comunas
 function dibujarTablaUsuarios(lista) {
     let usuarios = lista || getUsuarios();
     let tbody = document.getElementById("tabla-usuarios-body");
@@ -285,6 +297,7 @@ function dibujarTablaUsuarios(lista) {
     tbody.innerHTML = filas;
 }
 
+// Formulario usuario: abre la ventana modal para registrar a un nuevo usuario
 function abrirModalNuevoUsuario() {
     let form = document.getElementById("form-usuario");
     if (form) form.reset();
@@ -298,6 +311,7 @@ function abrirModalNuevoUsuario() {
     modal.show();
 }
 
+// Edicion de usuario: llena los campos con la informacion del usuario a modificar
 function abrirModalEditarUsuario(run) {
     let u = getUsuarioByRun(run);
     if (!u) return;
@@ -322,6 +336,7 @@ function abrirModalEditarUsuario(run) {
     modal.show();
 }
 
+// Guardar usuario: valida rut correo y datos personales antes de almacenar
 function guardarUsuario() {
     let esEdicion = document.getElementById("usuario-es-edicion").value === "1";
     let run = document.getElementById("usuario-run").value.trim().toUpperCase();
@@ -395,6 +410,7 @@ function guardarUsuario() {
     alert("Usuario guardado con éxito.");
 }
 
+// Eliminar usuario: elimina la cuenta seleccionada tras la confirmacion del usuario
 function eliminarUsuario(run) {
     let u = getUsuarioByRun(run);
     if (!u) return;

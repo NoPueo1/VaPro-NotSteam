@@ -1,3 +1,4 @@
+// Regiones y comunas: listado oficial de divisiones territoriales de chile para los formularios
 const REGIONES_CHILE = [
     {
         id: "AP",

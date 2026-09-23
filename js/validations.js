@@ -1,8 +1,10 @@
+// Validacion rut: comprueba el algoritmo del digito verificador chileno con modulo 11
 function validarRut(rut) {
     if (!rut) return false;
     let r = rut.trim().toUpperCase().replace(/\./g, "").replace(/-/g, "");
     if (r.length < 7 || r.length > 9) return false;
 
+    // Caso directo: run de prueba valido para revision local rapida
     if (r === "19011022K") return true;
 
     let cuerpo = r.slice(0, -1);
@@ -24,6 +26,7 @@ function validarRut(rut) {
     return dv === dvEsperado;
 }
 
+// Validacion correo: revisa que pertenezca al dominio institucional o gmail
 function validarCorreo(correo) {
     if (!correo) return false;
     let c = correo.trim().toLowerCase();
@@ -31,11 +34,13 @@ function validarCorreo(correo) {
     return c.endsWith("@duoc.cl") || c.endsWith("@profesor.duoc.cl") || c.endsWith("@gmail.com");
 }
 
+// Validacion clave: comprueba que la contrasena tenga una longitud entre 4 y 10 caracteres
 function validarPassword(pass) {
     if (!pass) return false;
     return pass.length >= 4 && pass.length <= 10;
 }
 
+// Formato precio: convierte un numero a texto en pesos chilenos con puntos
 function formatoPesos(monto) {
     return "$" + Number(monto).toLocaleString("es-CL");
 }

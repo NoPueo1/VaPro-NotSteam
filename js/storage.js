@@ -1,3 +1,4 @@
+// Catalogo inicial: lista de videojuegos precargados con precio stock y categoria
 const juegosPorDefecto = [
     {
         id: "JUEGO-1",
@@ -169,6 +170,7 @@ const juegosPorDefecto = [
     }
 ];
 
+// Cuentas base: usuarios por defecto con roles de admin vendedor y cliente
 const usuariosPorDefecto = [
     {
         run: "111111111",
@@ -205,6 +207,7 @@ const usuariosPorDefecto = [
     }
 ];
 
+// Almacenamiento inicial: verifica si existen datos en localstorage si no los guarda
 function cargarDatosIniciales() {
     let guardados = localStorage.getItem("lista_juegos");
     if (!guardados || !guardados.includes("Left4Live2.html")) {
@@ -216,12 +219,14 @@ function cargarDatosIniciales() {
 }
 cargarDatosIniciales();
 
+// Obtener juegos: recupera el arreglo de productos desde el almacenamiento local
 function getJuegos() {
     cargarDatosIniciales();
     let datos = localStorage.getItem("lista_juegos");
     return datos ? JSON.parse(datos) : [];
 }
 
+// Guardar juego: actualiza o agrega un nuevo producto a la lista en memoria
 function saveJuego(juego) {
     let juegos = getJuegos();
     if (juego.id) {
@@ -237,6 +242,7 @@ function saveJuego(juego) {
     return juego;
 }
 
+// Eliminar juego: quita un juego de la lista segun su identificador
 function deleteJuego(id) {
     let juegos = getJuegos();
     let filtrados = [];
@@ -248,6 +254,7 @@ function deleteJuego(id) {
     localStorage.setItem("lista_juegos", JSON.stringify(filtrados));
 }
 
+// Buscar juego: encuentra un producto especifico usando su id
 function getJuegoById(id) {
     let juegos = getJuegos();
     for (let i = 0; i < juegos.length; i++) {
@@ -258,12 +265,14 @@ function getJuegoById(id) {
     return null;
 }
 
+// Obtener usuarios: recupera la lista de personas registradas en el storage
 function getUsuarios() {
     cargarDatosIniciales();
     let datos = localStorage.getItem("lista_usuarios");
     return datos ? JSON.parse(datos) : [];
 }
 
+// Guardar usuario: registra o modifica los datos de una persona segun su run
 function saveUsuario(usuario) {
     let usuarios = getUsuarios();
     let runLimpio = usuario.run ? usuario.run.replace(/[^0-9kK]/g, '').toUpperCase() : "";
@@ -282,6 +291,7 @@ function saveUsuario(usuario) {
     return usuario;
 }
 
+// Eliminar usuario: remueve a un usuario registrado usando su run
 function deleteUsuario(run) {
     let usuarios = getUsuarios();
     let runLimpio = run.replace(/[^0-9kK]/g, '').toUpperCase();
@@ -294,6 +304,7 @@ function deleteUsuario(run) {
     localStorage.setItem("lista_usuarios", JSON.stringify(filtrados));
 }
 
+// Buscar usuario: busca una persona en la lista a traves de su run
 function getUsuarioByRun(run) {
     let usuarios = getUsuarios();
     let runLimpio = run.replace(/[^0-9kK]/g, '').toUpperCase();
@@ -305,6 +316,7 @@ function getUsuarioByRun(run) {
     return null;
 }
 
+// Sesion de usuario: gestiona la sesion del usuario activo mediante sessionstorage
 function getCurrentUser() {
     let u = sessionStorage.getItem("usuario_logeado");
     return u ? JSON.parse(u) : null;
@@ -318,6 +330,7 @@ function logoutUser() {
     sessionStorage.removeItem("usuario_logeado");
 }
 
+// Carrito de compras: funciones para agregar cambiar cantidad y vaciar la canasta
 function getCarrito() {
     let datos = localStorage.getItem("vapro_carrito");
     return datos ? JSON.parse(datos) : [];
@@ -389,6 +402,7 @@ function cantidadTotalCarrito() {
     return total;
 }
 
+// Contador del carrito: actualiza el numero en la insignia roja del header
 function actualizarBadgeCarrito() {
     let badges = document.querySelectorAll(".badge-carrito-total");
     let totalItems = cantidadTotalCarrito();
@@ -402,6 +416,7 @@ function actualizarBadgeCarrito() {
     });
 }
 
+// Barra de usuario: muestra el saludo con el nombre o los botones de ingreso
 function actualizarHeaderUsuario() {
     let contenedor = document.getElementById("header-user-area");
     if (!contenedor) return;

@@ -1,9 +1,12 @@
+// Carga del catalogo: espera que el documento este listo para mostrar los productos
 document.addEventListener("DOMContentLoaded", () => {
     const contenedor = document.getElementById('galeria-juegos');
     if (!contenedor) return;
 
+    // Obtencion de datos: lee los juegos guardados en el almacenamiento local
     let listaJuegos = (typeof getJuegos === "function") ? getJuegos() : [];
 
+    // Renderizado: limpia el contenedor y genera la tarjeta html de cada juego
     contenedor.innerHTML = '';
     listaJuegos.forEach(juego => {
         let precioTexto = (typeof formatoPesos === "function") ? formatoPesos(juego.precio) : "$" + juego.precio;
@@ -11,6 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let titulo = juego.nombre || 'Juego';
         let desc = juego.descripcion || '';
 
+        // Etiquetas: crea las insignias de categorias del juego
         let badgesHTML = '';
         if (Array.isArray(juego.etiquetas)) {
             juego.etiquetas.forEach(tag => {
@@ -20,6 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         let enlaceDetalle = juego.enlace || `detalle-juego.html?id=${juego.id}`;
 
+        // Tarjeta html: estructura con imagen titulo precio y boton de compra
         const tarjeta = `
             <div class="col">
                 <div class="card h-100 game-card bg-dark text-white border-0">
